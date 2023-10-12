@@ -1,0 +1,12 @@
+aside{ border-right: 0.4px solid gray;border-top: 0.4px solid gray; height: 82vh; }
+.aside-change-icon{ display: none}
+.aside-list{  width:290px; }
+.content-list{  width: calc(100% - 290px); }
+.table-list-width{ width: 100%; }
+@media only screen and (max-width: 1250px) {
+    .table-list-width{ width: 900px; }
+}
+@media only screen and (max-width: 740px) {
+    .aside-list{  display: none;  }
+    .content-list{  width: 100%;  }
+}

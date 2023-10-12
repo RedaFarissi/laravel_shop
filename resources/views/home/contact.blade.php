@@ -1,0 +1,51 @@
+@extends('layout')
+
+@section('title','MyShop')
+
+@section('head')
+    <link rel="stylesheet" href="{{ url('css/home/contact.css') }}">
+@endsection
+
+@section('content')
+
+<div class="contact bg-white m-auto position-relative" >
+    <h1>CONTACT US</h1>
+    <p class="line"><p>
+    <h6> GET AN EXPERIENCE </h6>
+    <div class='text-secondary'> Response guaranteed within 48 hours! </div>
+
+    <form action="" method="POST">
+        <input type='text' name='subject' placeholder='Title of the email (subject)' required /><br>
+        <input type='email' name='email' placeholder='Your email' required/><br>
+        <textarea name='message' placeholder='Your message' class='textarea'> </textarea>
+        <button type='submit' class='button btn bg-dark px-5 py-2 fs-5 text-light'> Send </button>
+    </form>
+
+    <div class="contact_box">
+        <h5 id="collection" class='my-3 ms-3'>MY SHOP</h5>
+        <div class='d-flex'> 
+            <i class="fa-regular fa-location-dot mt-1 mx-3"></i> 
+            <p>DR JDID, Rue 55 No 20 Sidi Slimane</p>
+        </div>
+        <div class='d-flex'> 
+            <i class="fa-solid fa-phone  mt-1 mx-3"></i>
+            <p> +212 5 00 00 00 00 </p>         
+        </div>
+        <div class='d-flex'> 
+            <i class="fa-solid fa-phone  mt-1 mx-3"></i>
+            <p> +212 6 06 70 56 46 </p>         
+        </div>
+        <div class='d-flex'> 
+            <i class="fa-solid fa-envelope mt-1 mx-3"></i>
+            <p> redaesskouni@gmail.com </p>         
+        </div>
+        <div class='d-flex justify-content-center align-items-center'>
+            <i class="fa-brands fa-facebook fs-3"></i>
+            <i class="fa-brands fa-instagram fs-3 mx-3"></i>
+            <i class="fa-brands fa-linkedin fs-3"></i>
+        </div>
+    </div>
+</div>
+
+
+@endsection

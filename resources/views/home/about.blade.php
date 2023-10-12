@@ -1,0 +1,36 @@
+@extends('layout')
+
+@section('title','MyShop')
+
+@section('head')
+    <link rel="stylesheet" href="{{ url('css/home/about.css') }}">
+@endsection
+
+@section('content')
+
+<div class="container-fluid row">
+    <img src="{{ asset('images/PLGraphic.png') }}" class="col-md-6 imge" />
+    <div class="col-md-6 bg d-flex justify-content-center align-items-center box-about">
+        <div>
+            <p class='d-flex'>
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            </p>
+            <p class='d-flex'>
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            </p>
+            <p class='d-flex'>
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            </p>
+            <p class='d-flex'>
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            </p>
+        </div>
+    </div>
+    <iframe class='col-sm-12 my-5' src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d763.1788856680156!2d-5.936015730417544!3d34.26262610669472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzTCsDE1JzQ1LjUiTiA1wrA1NicwNy4zIlc!5e1!3m2!1sen!2sus!4v1689732247634!5m2!1sen!2sus" height="550" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+@endsection
