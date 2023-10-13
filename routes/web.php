@@ -7,11 +7,9 @@ use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
 //use PHPUnit\Framework\Attributes\Group;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,11 +23,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
-
 Route::controller(ControllerAdmin::class)->group(function(){
     Route::get('/admin/home', "admin_home")->name('admin_home');
     
+    //Users
+    Route::get('admin/users/list', "admin_users_list")->name('admin_users_list');
+    Route::get('admin/user/create/view', "admin_user_create_views")->name('admin_user_create_views');
+    Route::get('admin/user/edit/{id}/views', "admin_user_edit_views")->name('admin_user_edit_views');
+
     //Products
     Route::get('admin/products/list', "admin_products_list")->name('admin_products_list');
     Route::get('admin/product/create/view', "admin_product_create_views")->name('admin_product_create_views');
@@ -64,5 +65,5 @@ Route::controller(ControllerHome::class)->group(function(){
     Route::get('/about', "about")->name('about');
     Route::get('/contact', "contact")->name('contact');
     Route::get('/', "home")->name('home');
-    Route::get('/{category_id}', "home_category_by_id")->name('home_category_by_id');
+    Route::get('home/{category_id}', "home_category_by_id")->name('home_category_by_id');
 });

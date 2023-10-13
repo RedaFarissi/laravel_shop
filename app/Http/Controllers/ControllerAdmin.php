@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -137,7 +138,19 @@ class ControllerAdmin extends Controller{
         }
         return redirect()->route('admin_products_list')->with('success', 'Selected items deleted.');
     }
+    /*********************** users *************************/
 
+    public function admin_users_list(){
+        return view('admin.users.list' , ["users"=>User::all()]);
+    }
+     
+    public function admin_user_create_views(){
+        return view('admin.users.create');
+    }
+   
+    public function admin_user_edit_views($id){
+        return view('admin.users.edit' , ["user"=>User::findOrFail($id)]);
+    }
     /*********************** sizes *********************** */
     public function admin_sizes_list(){
         return view('admin.sizes.list' , ["sizes"=>Size::all()]);

@@ -19,7 +19,7 @@
             @csrf 
             @method('PUT')
             <div class="mb-5 mb-4" >
-                <h5 class="font-weight-3 mb-5">Change category</h5>
+                <h5 class="font-weight-3 mb-5">Edit category</h5>
                
                 <table class='table-create'>
                     <tr class="mb-2">
