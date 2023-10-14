@@ -6,6 +6,7 @@ use App\Http\Controllers\ControllerAdmin;
 use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
+use App\Http\Controllers\ControllerCart;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -68,4 +69,9 @@ Route::controller(ControllerHome::class)->group(function(){
 
 Route::controller(ControllerContact::class)->group(function(){
     Route::get('/contact', "contact")->name('contact');
+});
+
+
+Route::controller(ControllerCart::class)->group(function(){
+    Route::get('/cart', "card_views")->name('card_views');
 });
