@@ -5,11 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerAdmin;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
-//use PHPUnit\Framework\Attributes\Group;
-
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,7 +24,10 @@ Route::controller(ControllerAdmin::class)->group(function(){
     //Users
     Route::get('admin/users/list', "admin_users_list")->name('admin_users_list');
     Route::get('admin/user/create/view', "admin_user_create_views")->name('admin_user_create_views');
+    Route::post('admin/user/create/store', "admin_user_create_store")->name('admin_user_create_store');
     Route::get('admin/user/edit/{id}/views', "admin_user_edit_views")->name('admin_user_edit_views');
+    Route::get('admin/user/delete/{id}', "admin_user_delete")->name('admin_user_delete');
+    Route::post('admin/users/delete/selected', "admin_users_delete_selected")->name('admin_users_delete_selected');
 
     //Products
     Route::get('admin/products/list', "admin_products_list")->name('admin_products_list');
@@ -56,7 +54,7 @@ Route::controller(ControllerAdmin::class)->group(function(){
     Route::get('admin/size/edit/{id}/views', "admin_size_edit_views")->name('admin_size_edit_views');
     Route::put('admin/size/edit/{id}', "admin_size_edit")->name('admin_size_edit');
     Route::get('admin/size/delete/{id}', "admin_size_delete")->name('admin_size_delete');
-    Route::get('admin/sizes/delete/selected', "admin_sizes_delete_selected")->name('admin_sizes_delete_selected');
+    Route::post('admin/sizes/delete/selected', "admin_sizes_delete_selected")->name('admin_sizes_delete_selected');
 });
 
 Route::resource("/products", controllerProduct::class);

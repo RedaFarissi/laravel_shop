@@ -1,9 +1,9 @@
 @extends('layouteAdmin')
 
-@section('title','Products list')
+@section('title','Users list')
 
 @section('path')
-    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_categories_list') }}'>Products</a> > list
+    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_users_list') }}'>Users</a> > list
 @endsection
 
 @section('head')
@@ -16,7 +16,7 @@
 
 <div id="product-box" class="content-list">
     <div class="p-4">
-        <form action="{{route('admin_products_delete_selected')}}" method="POST" id="delete_all_form">
+        <form action="{{route('admin_users_delete_selected')}}" method="POST" id="delete_all_form">
             @csrf
             <div class="d-flex-between-center mb-5" >
                 <h5 class="font-weight-3 mx-3">Select user to change</h5>
@@ -41,7 +41,7 @@
                             </th>
                             <th class="white"> Name </th>
                             <th class="white"> Email </th>
-                            <th class="white"> Status</th>
+                            <th class="white"> Email verified</th>
                             <th class="white"> Created at </th>
                             <th class="white"> Updated at </th>
                         </tr>
@@ -50,7 +50,7 @@
                                 <td><input type="checkbox" onclick="selectOne()" name="selected_items[]" class="selected_items" value="{{$user->id}}" /></td>
                                 <td><a href="{{ route('admin_user_edit_views' , [$user->id]) }}" class="blue">{{$user->name}} <a></td>
                                 <td class="white"> {{$user->email}} </td>
-                                <td class="white" > @if(is_null($user->email_verified_at)) verified @else <span class="text-danger">not verifie</span> @endif</td>
+                                <td class="white" > @if(is_null($user->email_verified_at)) <span class="text-danger">not verified</span> @else <span class="text-success">verified</span> @endif</td>
                                 
                                 <td class="font-size-14 white" style="width:150px;">{{ $user->created_at }}</td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $user->updated_at }}</td>
@@ -64,7 +64,6 @@
                 </div>
                 <hr/>
             </div>
-       
         </form>
     </div>
 </div>

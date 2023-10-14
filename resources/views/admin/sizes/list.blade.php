@@ -1,6 +1,6 @@
 @extends('layouteAdmin')
 
-@section('title','Admin Sizes List')
+@section('title','Sizes List')
 
 @section('path')
     <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_sizes_list') }}'>Sizes</a> > List

@@ -1,24 +1,24 @@
 @extends('layouteAdmin')
 
-@section('title','Category Edit')
+@section('title','Edit User')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/categories/edit.css') }}"> 
+    <link rel="stylesheet" href="{{ url('css/admin/users/edit.css') }}"> 
 @endsection
 
 @section('path')
-    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_categories_list') }}'>Category</a> > Edit
+    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_users_list') }}'>User</a> > Edit
 @endsection
 
 @section('size',"aside-list")
 
 @section('content')
 <div id="product-box" class="content-list">
-    <div class="px-5">
+    <div class="px-5 mb-5">
         <h5 class="font-weight-3 mb-5">Edit user</h5>
-        <form action="{{ route('admin_category_edit' , [$user->id]) }}" method="POST">
+        <form action="{{ route('profile.update' , $user->id , true) }}" method="POST">
             @csrf 
-            @method('PUT')
+            @method('patch')
             <div class="mb-4" >
                 <table class='table-create'>
                     <tr><td colspan="2"><h4 class="mb-3 my-4">Profile Information </h4></td></tr>
@@ -36,6 +36,7 @@
                             @enderror
                         </td> 
                     </tr>
+
                     <tr class="mb-2">
                         <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">Email :</b></td>
                         <td> <input type="email" value="{{$user->email}}" id="email" name="email" class="input-text mt-2 mb-2"/></td>
@@ -49,6 +50,7 @@
                             @enderror
                         </td> 
                     </tr>
+
                     <tr class="mb-2">
                         <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">Password :</b></td>
                         <td> {{$user->password}} </td>
@@ -63,9 +65,7 @@
                         </td> 
                     </tr>
                 </table>
-                
-                <button type="submit" name="submit" class="m-2 mt-3 btn bg-blue white" >Save</button>
-                
+                <button type="submit" name="submit" value="true" class="m-2 mt-3 btn bg-blue white" >Save</button>
             </div>
         </form>
         
@@ -74,9 +74,10 @@
         <hr class="w-75 ms-3"/>
         {{-- UPDATE PASSWORD --}}
         
-        <form method="POST" action="{{ route('password.update') }}">
+        <form method="POST" action="{{ route('profile.update') }}">
             @csrf
-            @method('put')
+            @method('patch')
+            
             <div class="mb-4">
                 <table>
                     <tr><td colspan="2"><h4 class="mb-3 my-4">Update Password </h4></td></tr>
@@ -96,30 +97,37 @@
                             @enderror
                         </td> 
                     </tr>
+
                     <tr class="mb-2">
                         <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">New Password :</b></td>
                         <td> 
-                            <input type="password" id="current_password" name="" class="input-text mt-2" />
+                            <input type="password" id="password" name="password" class="input-text mt-2" />
                         </td>
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('current_password')   
+                            @error('password')   
                              <div class="alert alert-danger mt-2">
                                 {{$message}} 
                              </div>                
                             @enderror
                         </td> 
                     </tr>
+
                     <tr class="mb-2">
-                        <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">Confirm Password :</b></td>
+                        <td  class="lavel-create-width">
+                            <b class="d-block mt-2 mb-2">Confirm Password :</b>
+                        </td>
                         <td> 
-                            <input type="password" id="" name="" class="input-text mt-2" />
+                            <input 
+                                type="password" id="password_confirmation" 
+                                name="password_confirmation" class="input-text mt-2" 
+                            />
                         </td>
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('current_password')   
+                            @error('password_confirmation')   
                              <div class="alert alert-danger mt-2">
                                 {{$message}} 
                              </div>                
@@ -142,8 +150,8 @@
             </p>
 
 
-            <div class="alert bg-dark d-flex-between-center m-2 alert-save-item">
-                <a href="{{ route('admin_category_delete' , [$user->id]) }}" class="btn btn-danger" >Delete</a>
+            <div class="alert bg-dark d-flex-between-center m-2 mb-5 alert-save-item">
+                <a href="{{ route('admin_user_delete' , [$user->id]) }}" class="btn btn-danger" >Delete</a>
             </div>
         </div>
     </div>

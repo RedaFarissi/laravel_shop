@@ -17,16 +17,17 @@ class ProfileController extends Controller {
         ]);
     }
     
-    public function update(ProfileUpdateRequest $request): RedirectResponse {
+    public function update(ProfileUpdateRequest $request ): RedirectResponse {
         $request->user()->fill($request->validated());
-
+        
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
         $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $bool = $request->input('submit', false);
+      return ($bool) ? 
+      redirect()-> route('admin_user_edit_views',$request->user()->id):
+      Redirect::route('profile.edit')->with('status', 'profile-updated') ;
     }
 
     public function destroy(Request $request): RedirectResponse {

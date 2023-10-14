@@ -118,8 +118,8 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
         <script src="{{ url('js/bootstrap.js') }}"></script>
-        <script>
+        {{-- <script>
           document.body.style = "height:200vh"
-        </script>
+        </script> --}}
     </body>
 </html>

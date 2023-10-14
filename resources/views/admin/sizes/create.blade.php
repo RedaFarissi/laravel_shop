@@ -1,9 +1,9 @@
 @extends('layouteAdmin')
 
-@section('title','Size Create')
+@section('title','Add Size')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/sizes/create.css') }}"> 
+    <link rel="stylesheet" href="{{ url('css/admin/users/create.css') }}"> 
 @endsection
 
 @section('path')
@@ -18,10 +18,10 @@
         <form action="{{ route('admin_size_create_store') }}" method="post" id="delete_all_form">
             @csrf 
             <div class="mb-5 mb-4" >
-            <h5 class="font-weight-3 mb-5">Create Size</h5>
-            <table>
+            <h5 class="font-weight-3 mb-5">Add Size</h5>
+            <table class='table-create'>
                 <tr class="mb-2">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Name :</b></td>
+                        <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Name :</b></td>
                         <td> <input type="text" value="{{old('name')}}" name="name" class="input-text mt-2 mb-2"  id='name' autofocus/></td>
                 </tr>
                 <tr >

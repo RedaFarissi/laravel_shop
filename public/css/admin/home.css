@@ -125,10 +125,10 @@ a:hover{ color:var(--white);}
 .lavel-create-width{
     width:150px;
 }
-.input-text{
+.input-text {
     height: 35px;
     width: 280px;
-    background-color: var(--black);
+    background-color: var(--black) ;
     border-radius: 3px;
     color: var(--white);
     outline: none;

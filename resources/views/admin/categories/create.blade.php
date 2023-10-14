@@ -1,9 +1,9 @@
 @extends('layouteAdmin')
 
-@section('title','Category Create')
+@section('title','Add Category')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/categories/create.css') }}"> 
+    <link rel="stylesheet" href="{{ url('css/admin/users/create.css') }}"> 
 @endsection
 
 @section('path')

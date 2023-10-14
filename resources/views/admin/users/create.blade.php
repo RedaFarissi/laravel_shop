@@ -1,13 +1,13 @@
 @extends('layouteAdmin')
 
-@section('title','Size Create')
+@section('title','Add User')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/sizes/create.css') }}"> 
+    <link rel="stylesheet" href="{{ url('css/admin/users/create.css') }}"> 
 @endsection
 
 @section('path')
-    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_sizes_list') }}'>User</a> > Create
+    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_users_list') }}'>User</a> > Create
 @endsection
 
 @section('size',"aside-list")
@@ -15,34 +15,68 @@
 @section('content')
 <div id="product-box" class="content-list">
     <div class="p-4">
-        <form action="{{ route('admin_size_create_store') }}" method="post" id="delete_all_form">
+        <form action="{{ route('admin_user_create_store') }}" method="POST" id="delete_all_form">
             @csrf 
             <div class="mb-5 mb-4" >
-            <h5 class="font-weight-3 mb-5">Create User</h5>
+            <h5 class="font-weight-3 mb-5">Add User</h5>
             <table class='table-create'> 
                 <tr class="mb-2">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Name :</b></td>
-                        <td> <input type="text" value="{{old('name')}}" name="name" class="input-text mt-2 mb-2"  id='name' autofocus/></td>
+                    <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Name :</b></td>
+                    <td> 
+                        <input 
+                            type="text" value="{{ old('name')}}" name="name" 
+                            class="input-text mt-2 mb-2"  id='name' autofocus
+                        />
+                    </td>
                 </tr>
+               
                 <tr class="mb-2">
-                    <td style="width:150px"><b class="d-block mt-2 mb-2"><Embed></Embed>Email :</b></td>
-                    <td> <input type="email" value="{{old('email')}}" name="email" class="input-text mt-2 mb-2"/></td>
+                    <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Email :</b></td>
+                    <td> 
+                        <input 
+                            type="email" name="email" 
+                            class="input-text mt-2 mb-2" id='email' 
+                        />
+                    </td>
                 </tr>
+                <tr>
+                    <td colspan="2">  
+                         @error('email')   
+                          <div class="alert alert-danger mt-2"> {{$message}} </div>                
+                         @enderror
+                     </td> 
+                </tr>         
+                
                 <tr class="mb-2">
-                    <td style="width:150px"><b class="d-block mt-2 mb-2">Password :</b></td>
-                    <td> <input type="password" value="{{old('password')}}" name="password" class="input-text mt-2 mb-2" /></td>
+                    <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Password :</b></td>
+                    <td> 
+                        <input 
+                            type="password"   id="password"
+                            name="password" class="input-text mt-2 mb-2" 
+                         />
+                    </td>
                 </tr>
-                <tr class="mb-2">
-                    <td style="width:150px"><b class="d-block mt-2 mb-2">Password :</b></td>
-                    <td> <input type="password" value="{{old('password')}}" name="password" class="input-text mt-2 mb-2" /></td>
+                <tr>
+                    <td colspan="2">  
+                         @error('password')   
+                          <div class="alert alert-danger mt-2">
+                             {{$message}} 
+                          </div>                
+                         @enderror
+                     </td> 
                 </tr>
+
                 <tr class="mb-2">
-                    <td style="width:150px"><b class="d-block mt-2 mb-2">Password verifie :</b></td>
-                    <td> <input type="password" value="{{old('password')}}" name="password" class="input-text mt-2 mb-2" /></td>
+                    <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Password verifie :</b></td>
+                    <td> 
+                        <input 
+                            type="password"  name="password_confirmation" 
+                            class="input-text mt-2 mb-2"  id="password_confirmation"
+                        /></td>
                 </tr>
                 <tr >
                    <td colspan="2">  
-                        @error('name')   
+                        @error('password_confirmation')   
                          <div class="alert alert-danger mt-2">
                             {{$message}} 
                          </div>                

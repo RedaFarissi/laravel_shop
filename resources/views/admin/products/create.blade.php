@@ -1,6 +1,6 @@
 @extends('layouteAdmin')
 
-@section('title','Product Create')
+@section('title','Add Product')
 
 @section('head')
     <link rel="stylesheet" href="{{ url('css/admin/products/create.css') }}"> 
