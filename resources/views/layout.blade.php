@@ -48,7 +48,7 @@
 
         <div class='header-right d-flex align-items-center'>
               
-              <a href="cart" class="hedaer-right-btn btn border border-1 border-dark position-relative" title='Cart'> 
+              <a href="{{ route('cart_view') }}" class="hedaer-right-btn btn border border-1 border-dark position-relative" title='Cart'> 
                 <i class="fa-solid fa-cart-shopping"></i> 
                 <div class='badge rounded-circle text-dark position-absolute' style='right:-7px;top:-7px;'>  </div>
               </a>

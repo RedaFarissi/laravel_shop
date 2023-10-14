@@ -16,15 +16,16 @@
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100" >
         <div class="col">
-          <div class="card" style="box-shadow:3px 3px 20px rgba(0 0 0/25%)">
+          <div class="card rounded" style="box-shadow:3px 3px 20px rgba(0 0 0/25%);">
             <div class="card-body p-4">
   
               <div class="row">
   
                 <div class="col-lg-7">
-                  <h5 class="mb-3"><a href="#!" class="text-body"><i
-                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
-                  <hr>
+                  <h5 class="mb-3"><a href="#!" class="text-body">
+                    <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a>
+                  </h5>
+                  <hr/>
   
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
@@ -64,9 +65,9 @@
                     </div>
                   </div>
                 </div>
+                
                 <div class="col-lg-5">
-  
-                  <div class="card bg-primary text-white rounded-3">
+                  <div class="card text-dark rounded-3" style="border:9px solid var(--rose)">
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Card details</h5>
@@ -75,13 +76,13 @@
                       </div>
   
                       <p class="small mb-2">Card type</p>
-                      <a href="#!" type="submit" class="text-white"><i
+                      <a href="#!" type="submit" class="text-dark"><i
                           class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-white"><i
+                      <a href="#!" type="submit" class="text-dark"><i
                           class="fab fa-cc-visa fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-white"><i
+                      <a href="#!" type="submit" class="text-dark"><i
                           class="fab fa-cc-amex fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                      <a href="#!" type="submit" class="text-dark"><i class="fab fa-cc-paypal fa-2x"></i></a>
   
                       <form class="mt-4">
                         <div class="form-outline form-white mb-4">
@@ -132,7 +133,7 @@
                         <p class="mb-2">$4818.00</p>
                       </div>
   
-                      <button type="button" class="btn btn-info btn-block btn-lg">
+                      <button type="button" class="btn rose btn-block btn-lg">
                         <div class="d-flex justify-content-between">
                           <span>$4818.00</span>
                           <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>

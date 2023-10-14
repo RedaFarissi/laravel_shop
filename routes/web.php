@@ -73,5 +73,5 @@ Route::controller(ControllerContact::class)->group(function(){
 
 
 Route::controller(ControllerCart::class)->group(function(){
-    Route::get('/cart', "card_views")->name('card_views');
+    Route::get('/cart', "cart_view")->name('cart_view');
 });
