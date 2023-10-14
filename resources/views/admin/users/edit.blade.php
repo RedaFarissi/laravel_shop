@@ -30,9 +30,9 @@
                     <tr>
                        <td colspan="2">  
                             @error('name')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                            <ul class="mt-2">
+                                <li class="text-danger"> {{$message}} </li>
+                             </ul>               
                             @enderror
                         </td> 
                     </tr>
@@ -44,9 +44,9 @@
                     <tr>
                        <td colspan="2">  
                             @error('email')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                            <ul class="mt-2">
+                                <li class="text-danger"> {{$message}} </li>
+                             </ul>              
                             @enderror
                         </td> 
                     </tr>
@@ -58,9 +58,9 @@
                     <tr>
                        <td colspan="2">  
                             @error('password')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                            <ul class="mt-2">
+                                <li class="text-danger"> {{$message}} </li>
+                            </ul>             
                             @enderror
                         </td> 
                     </tr>
@@ -74,9 +74,9 @@
         <hr class="w-75 ms-3"/>
         {{-- UPDATE PASSWORD --}}
         
-        <form method="POST" action="{{ route('profile.update') }}">
+        <form method="POST" action="{{ route('password.update') }}">
             @csrf
-            @method('patch')
+            @method('put')
             
             <div class="mb-4">
                 <table>
@@ -85,32 +85,30 @@
                     <tr>
                         <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">Current Password :</b></td>
                         <td> 
-                            <input type="password" id="current_password" name="current_password" class="input-text mt-2" />
+                            <input 
+                                type="password" id="current_password" 
+                                name="current_password" class="input-text mt-2" 
+                            />
                         </td>
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('current_password')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
-                            @enderror
+                            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2 text-danger" />
                         </td> 
                     </tr>
 
                     <tr class="mb-2">
                         <td  class="lavel-create-width"><b class="d-block mt-2 mb-2">New Password :</b></td>
                         <td> 
-                            <input type="password" id="password" name="password" class="input-text mt-2" />
+                            <input 
+                                type="password" id="password" name="password" 
+                                class="input-text mt-2"
+                            />
                         </td>
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('password')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
-                            @enderror
+                            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2 text-danger" />
                         </td> 
                     </tr>
 
@@ -127,15 +125,11 @@
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('password_confirmation')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
-                            @enderror
+                        <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2 text-danger" />
                         </td> 
                     </tr>
                 </table>
-                <button type="submit" name="submit" class="m-2 mt-3 btn bg-blue white" >Save</button>
+                <button type="submit" value="true" name="submit" class="m-2 mt-3 btn bg-blue white" >Save</button>
             </div>
         </form> 
         

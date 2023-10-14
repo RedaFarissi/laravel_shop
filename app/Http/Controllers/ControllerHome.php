@@ -21,9 +21,6 @@ class ControllerHome extends Controller
             'category_id' => $category_id ,
         ] );
     }
-    public function contact(){
-        return view("home.contact");
-    }
     public function about(){
         return view("home.about");
     }

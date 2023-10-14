@@ -70,7 +70,8 @@ a:hover{ color:var(--white);}
 .fa-plus{ font-weight: 2000;  }
 .link-blue{ color:var(--blue);}
 .link-blue:hover{ color:var(--white);}
-
+.bg-blue{ background-color: var(--blue);}
+.under-line{ text-decoration: underline;}
 @media only screen and (max-width: 740px) {
     .header{display: block;text-align: center;}
     .header-logo{  margin: auto; }

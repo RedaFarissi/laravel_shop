@@ -45,7 +45,7 @@
           <a href="{{ route('contact') }}" class='col-2 text-center text-dark hedaer-center-item'> Contact </a>
         </div>
 
-        <div class='header-right'>
+        <div class='header-right d-flex align-items-center'>
               
               <a href="cart" class="hedaer-right-btn btn border border-1 border-dark position-relative" title='Cart'> 
                 <i class="fa-solid fa-cart-shopping"></i> 
@@ -56,7 +56,7 @@
                   <i class="fa-solid fa-plus fs-5 w-100 text-center"></i>
                 </a>
                 <span href="{{ route('profile.update') }}" class="hedaer-right-btn position-relative"> 
-                  <i class="fa-solid fa-circle-user fs-1 cursor-pointer" onclick="profile_click()"></i>
+                  <i class="fa-solid fa-circle-user cursor-pointer ms-2" style="font-size:53px" onclick="profile_click()"></i>
 
                   <div id="profile-drop" class="pb-4" style="display :none">
                     <div class="create-style-icon"></div>

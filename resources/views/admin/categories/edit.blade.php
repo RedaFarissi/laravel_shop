@@ -29,9 +29,7 @@
                     <tr>
                        <td colspan="2">  
                             @error('name')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>
                             @enderror
                         </td> 
                     </tr>

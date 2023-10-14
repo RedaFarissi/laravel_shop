@@ -37,9 +37,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                             @error('name')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>              
                             @enderror
                         </td> 
                     </tr>
@@ -54,9 +52,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                            @error('image')
-                             <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                             </div>                
+                           <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>                 
                            @enderror
                         </td> 
                     </tr>
@@ -74,9 +70,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                             @error('category_id')
-                                <div class="alert alert-danger mt-2">
-                                   {{$message}}  
-                                </div>                
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>              
                             @enderror
                         </td> 
                     </tr>
@@ -90,9 +84,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                             @error('description')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul> 
                             @enderror
                         </td> 
                     </tr>
@@ -104,9 +96,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                             @error('price')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>
                             @enderror
                         </td> 
                     </tr>
@@ -141,15 +131,6 @@
                           </div>  
                         </td>
                     </tr>
-                    <tr>
-                       <td class="td" colspan="2">  
-                            @error('sizes')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
-                            @enderror
-                        </td> 
-                    </tr>
                    
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
                         <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Available :</b></td>
@@ -158,9 +139,7 @@
                     <tr>
                        <td class="td" colspan="2">  
                             @error('available')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul> 
                             @enderror
                         </td> 
                     </tr>

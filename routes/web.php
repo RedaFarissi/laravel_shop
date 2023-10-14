@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerAdmin;
+use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
 
@@ -60,8 +61,11 @@ Route::controller(ControllerAdmin::class)->group(function(){
 Route::resource("/products", controllerProduct::class);
 
 Route::controller(ControllerHome::class)->group(function(){
-    Route::get('/about', "about")->name('about');
-    Route::get('/contact', "contact")->name('contact');
     Route::get('/', "home")->name('home');
-    Route::get('home/{category_id}', "home_category_by_id")->name('home_category_by_id');
+    Route::get('home/categories/{category_id}', "home_category_by_id")->name('home_category_by_id');
+    Route::get('/about', "about")->name('about');
+});
+
+Route::controller(ControllerContact::class)->group(function(){
+    Route::get('/contact', "contact")->name('contact');
 });

@@ -17,8 +17,12 @@
               <a class="header-logo navbar-brand h6 font-weight-4" href="{{ route('admin_home') }}">
                  Administration 
               </a>
-              <div class="d-flex header-link">
-                WELCOME, <b><b>Name</b></b>. <a href='{{route('home')}}' title='Home'>VIEW SITE</a> / <a href='#' title='change password'>CHANGE PASSWORD</a> / <a href='#'>LOG OUT</a>
+              <div class="d-flex header-link align-items-center">
+                WELCOME, <b><b>Name</b></b>. <a href='{{route('home')}}' title='Home'>VIEW SITE</a> / <a href='#' title='change password'>CHANGE PASSWORD</a> / 
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="bg-blue white font-weight-3 under-line" style=";outline:none;border:none">Logout</button> 
+                </form>
               </div>
         </nav>
 

@@ -29,6 +29,13 @@
                         />
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2">  
+                        <x-input-error class="mt-2 text-danger" :messages="$errors->get('name')" />
+                    </td> 
+                </tr>       
+
+
                
                 <tr class="mb-2">
                     <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Email :</b></td>
@@ -41,10 +48,8 @@
                 </tr>
                 <tr>
                     <td colspan="2">  
-                         @error('email')   
-                          <div class="alert alert-danger mt-2"> {{$message}} </div>                
-                         @enderror
-                     </td> 
+                        <x-input-error class="mt-2 text-danger" :messages="$errors->get('email')" />
+                    </td> 
                 </tr>         
                 
                 <tr class="mb-2">
@@ -59,9 +64,9 @@
                 <tr>
                     <td colspan="2">  
                          @error('password')   
-                          <div class="alert alert-danger mt-2">
-                             {{$message}} 
-                          </div>                
+                         <ul class="mt-2">
+                            <li class="text-danger"> {{$message}} </li>
+                         </ul>              
                          @enderror
                      </td> 
                 </tr>
@@ -77,9 +82,9 @@
                 <tr >
                    <td colspan="2">  
                         @error('password_confirmation')   
-                         <div class="alert alert-danger mt-2">
-                            {{$message}} 
-                         </div>                
+                         <ul class="mt-2">
+                            <li class="text-danger"> {{$message}} </li>
+                         </ul>                
                         @enderror
                     </td> 
                 </tr>

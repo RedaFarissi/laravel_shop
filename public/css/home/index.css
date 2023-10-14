@@ -2,7 +2,7 @@
 .cadre-product{ width:95%;float:right; }
 .like:hover{ background-color:black; }
 .like-i:hover{ color:white }
-.aside{ width:220px; float:left; background-color: white; }
+.aside{ width:220px; float:left; background-color: white; font-family: system-ui; }
 .main{ width: calc(100% - 220px); float:right; }
 a{ color: rgba(0 0 0/85%); text-decoration: none;}  
 .card-img-top{ height:320px; object-fit:content;}
