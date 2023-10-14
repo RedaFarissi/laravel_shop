@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileUpdateRequest;
 
 class ControllerAdmin extends Controller{
-  
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function admin_home(){
         return view('admin.index');
     }
@@ -49,7 +51,6 @@ class ControllerAdmin extends Controller{
     public function admin_user_edit_views($id){
         return view('admin.users.edit' , ["user"=>User::findOrFail($id)]);
     }
-   
     public function admin_user_delete($id){
         $user = User::findOrFail($id);
         $user->delete();

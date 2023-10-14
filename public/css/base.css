@@ -30,7 +30,7 @@
 .font-size-18{font-size:18px;}
 .font-size-19{font-size:19px;}
 .font-size-20{font-size:20px;}
-
+a{ color: rgba(0 0 0/85%); text-decoration: none;}  
 
 
 /***************************** *****************************/
@@ -54,7 +54,10 @@ body::-moz-scrollbar-thumb { border-radius: 5px; background-color: gray; }
 .store>a:hover { color:white ; }
 h1, h2, h3, h4, h5 , h6 { font-family: 'Ubuntu', sans-serif; font-weight:normal; }
 main{ margin:2rem;}
-.header{ height:90px; background-color:var(--white); margin-bottom:2rem}
+.header{ 
+  height:90px; background-color:var(--white); margin-bottom:2rem;
+  border-bottom: 0.5px solid rgba(0 0 0/30%);
+}
 .header-right{ display: flex; }
 .header-right>a{ display:block; margin-right: 6px; }
 #profile-drop{

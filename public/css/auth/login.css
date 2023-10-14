@@ -1,22 +1,25 @@
-:root {  
-    --background: #1a1a2e;  --color: #ffffff;  --primary-color: #0f3460; 
-
+:root { 
     --blue: #417690;  --blueDark:#264b5d; --green:#70bf2b; --white:#eeeeee; 
     --gold:#f5dd65;  --black:#121212; --miniDark:#212121; --darkLight:#333333;
     --rose:#ffd3b4;
-}
+  }
 *{  box-sizing: border-box; padding: 0%; margin: 0%; }
+a {  text-decoration: none;  color: var(--black); }
 html { scroll-behavior: smooth; }
 body {
-    margin: 0; box-sizing: border-box; background: var(--rose); 
+    margin: 0; box-sizing: border-box; background: var(--white); 
     color: var(--black); letter-spacing: 1px; transition: background 0.2s ease; 
     -webkit-transition: background 0.2s ease; 
     -moz-transition: background 0.2s ease;
     -ms-transition: background 0.2s ease;
     -o-transition: background 0.2s ease;
+    font-family: "poppins";
 }
+.header{ 
+    height:90px; background-color:var(--white); margin-bottom:2rem;
+    border-bottom: 0.5px solid rgba(0 0 0/30%);
+  }
 
-a {  text-decoration: none;  color: var(--color); }
 
 h1 {  font-size: 2.5rem; }
 
@@ -62,8 +65,8 @@ h1 {  font-size: 2.5rem; }
 }
 
 .login-container form button {
-    background-color: var(--primary-color);
-    color: var(--color);
+    background-color: var(--rose);
+    color: var(--black);
     display: block;
     padding: 13px;
     border-radius: 5px;
@@ -97,14 +100,14 @@ h1 {  font-size: 2.5rem; }
 
 #remember_me{
     width: max-content;
-    height: max-content; background-color: red;
+    height: max-content; 
     display: inline;
 }
 
 .circle {
     width: 8rem;
     height: 8rem;
-    background: var(--white);
+    background: var(--rose);
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;

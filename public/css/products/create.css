@@ -1,0 +1,53 @@
+.lavel-create-width{
+    width:150px;
+}
+
+/**************** Create field *****************/
+.lavel-create-width{
+    width:150px;
+}
+.input-text {
+    height: 35px;
+    width: 280px;
+    background-color: var(--white) ;
+    border-radius: 3px;
+    color: var(--black);
+    outline: none;
+    padding: 7px;
+    border: 0.3px solid rgba(255 255 255/50%);
+}
+
+.input-select{
+    width: max-content;
+    background-color: var(--white);
+    height: 35px;
+    padding: 0 3px ;
+    color: var(--white);
+    border-radius: 3px;
+}
+
+.input-textarea{
+    width: 680px;
+    height: 200px;
+    background-color: var(--white);
+    color: var(--black);
+    padding: 7px;
+    border-radius: 3px;
+}
+
+.input-number{
+    width: 170px;
+    height: 35px;
+    background-color: var(--white);
+    border: 0.3px solid rgba(255 255 255/50%);
+    border-radius: 3px;
+    color: var(--black);
+    outline: none;
+    padding: 7px;
+}
+
+.image_cadr_input_file{
+   width: 300px;
+}
+
+/********************* **************************/

@@ -8,6 +8,10 @@ use App\Models\Category;
 use App\Models\Size;
 
 class controllerProduct extends Controller{
+    public function __construct(){
+        $this->middleware('auth')->only('create','store');
+    }
+    
     public function index() {
        return view('products.index' , ['products'=> Product::with('sizes')->get()]);
     }

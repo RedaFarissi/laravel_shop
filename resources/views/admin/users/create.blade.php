@@ -100,4 +100,5 @@
 </div>
 
 <script src="{{ url('js/admin-aside-fixed-aside.js') }}"></script>
+
 @endsection

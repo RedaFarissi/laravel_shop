@@ -9,7 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ url('css/admin/home.css') }}">
         @yield('head')
-        <style>  *{ font-size:99%}  </style>
+        <style>  
+          *{ font-size:99%}  
+        </style>
     </head>
     <body>
     

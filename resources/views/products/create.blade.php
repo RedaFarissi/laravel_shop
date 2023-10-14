@@ -3,11 +3,7 @@
 @section('title','Product Create')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/home.css') }}">
-    <link rel="stylesheet" href="{{ url('css/base.css') }}">
-    <style>
-       :root{ --white: #121212;  --black:#eeeeee; }
-    </style>
+    <link rel="stylesheet" href="{{ url('css/products/create.css') }}"> 
 @endsection
 
 @section('content')
@@ -19,7 +15,7 @@
                 <h5 class="font-weight-3 mb-5">Add product</h5>
                 <table>
                     <tr class="mb-2">
-                            <td style="width:150px"><b class="d-block mt-2 mb-2">Name :</b></td>
+                            <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Name :</b></td>
                             <td> <input type="text" value="{{old('name')}}" name="name" class="input-text mt-2 mb-2 border-dark"  id='name'/></td>
                         </div>
                     </tr>
@@ -34,7 +30,7 @@
                     </tr>
 
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Image :</b></td>
+                        <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Image :</b></td>
                         <td>  <input type="file" value="{{old('image')}}" name="image" id='image' class="mt-2 mb-2"/> </td>
                     </tr>
                     <tr>
@@ -48,7 +44,7 @@
                     </tr>
 
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Category :</b></td>
+                        <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Category :</b></td>
                         <td> 
                             <select id="category_id" name="category_id" class="input-select mt-2 mb-2">
                                 @foreach ($categories as $category)
@@ -68,7 +64,7 @@
                     </tr>
 
                     <tr class="position-relative" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2 position-absolute" style="top:0">description :</b></td>
+                        <td class="lavel-create-width"><b class="d-block mt-2 mb-2 position-absolute" style="top:0">description :</b></td>
                         <td> 
                             <textarea type="text" name="description" class="input-textarea mt-2 mb-2" id='description'>{{old('description')}}</textarea>
                         </td>
@@ -85,7 +81,7 @@
                    
 
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Price :</b></td>
+                        <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Price :</b></td>
                         <td> <input type="number" value="{{old('price')}}" name="price" class="input-number mt-2 mb-2 border-dark" id="price"/> </td>
                     </tr>
                     <tr>
@@ -99,7 +95,7 @@
                     </tr>
 
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td style="width:150px"><b class="d-block mt-2 mb-2">Sizes :</b></td>
+                        <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Sizes :</b></td>
                         <td class="d-flex flex-wrap"> 
                             @foreach ($sizes as $size)
                               <div class="alert border border-1 border-dark d-flex-center-center mt-2 mb-2" style='width:110px;margin:2px '> 
