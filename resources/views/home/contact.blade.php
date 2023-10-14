@@ -15,8 +15,8 @@
     <div class='text-secondary'> Response guaranteed within 48 hours! </div>
 
     <form action="" method="POST">
-        <input type='text' name='subject' placeholder='Title of the email (subject)' required /><br>
-        <input type='email' name='email' placeholder='Your email' required/><br>
+        <input type='text' name='subject' class="subject" placeholder='Title of the email (subject)' required /><br>
+        <input type='email' name='email'  placeholder='Your email' required/><br>
         <textarea name='message' placeholder='Your message' class='textarea'> </textarea>
         <button type='submit' class='button btn bg-dark px-5 py-2 fs-5 text-light'> Send </button>
     </form>

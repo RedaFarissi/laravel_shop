@@ -14,6 +14,7 @@ input, textarea{
     margin-top:0.9rem; border-radius:5px; outline:none;
 }
 input[name='name'] , input[name='email']{ width: 40%; }
+.subject{ width: 40%;}
 .textarea{ width: 60%; height:30vh; padding-top:9px; resize:none; }
 .button{ position:absolute; bottom:2.5rem; right:calc(50% - 90px); background-color:#ffd3b4; }
 #collection{ width:max-width; }
