@@ -90,19 +90,14 @@ h1 {  font-size: 2.5rem; }
 }
 
 .login-container form button:hover {
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
-    transform: scale(1.02);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15); transform: scale(1.02);
     -webkit-transform: scale(1.02);
     -moz-transform: scale(1.02);
     -ms-transform: scale(1.02);
     -o-transform: scale(1.02);
 }
 
-#remember_me{
-    width: max-content;
-    height: max-content; 
-    display: inline;
-}
+#remember_me{ width: max-content; height: max-content;  display: inline; }
 
 .circle {
     width: 8rem;
@@ -117,10 +112,7 @@ h1 {  font-size: 2.5rem; }
 }
 
 .illustration {
-    position: absolute;
-    top: -14%;
-    right: -2px;
-    width: 90%;
+    position: absolute;  top: -14%;  right: -2px;  width: 90%;
 }
 
 .circle-one {
@@ -145,17 +137,11 @@ h1 {  font-size: 2.5rem; }
     -o-transform: translate(45%, 45%);
 }
 
-.register-forget {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
+.register-forget { margin: 1rem 0; display: flex; justify-content: space-between;
 }
-.register-forget>a:hover{
-    color:white
+.register-forget>a:hover{ color:black; font-size: 103%;
 }
-.opacity {
-    opacity: 0.6;
-}
+.opacity { opacity: 0.6;}
 
 
 
@@ -193,6 +179,3 @@ h1 {  font-size: 2.5rem; }
 
 /***************************************/
 
-.already_register:hover{ 
-    color:white
-}

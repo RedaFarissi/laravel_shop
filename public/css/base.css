@@ -31,11 +31,11 @@
 .font-size-19{font-size:19px;}
 .font-size-20{font-size:20px;}
 a{ color: rgba(0 0 0/85%); text-decoration: none;}  
-
+.black{ color: var(--black);}
+.rose{ background-color: #ffd3b4}
+.text-rose{ color: #ffd3b4}
 
 /***************************** *****************************/
-
-
 
 body{ position:relative;   font-family: "poppins"; }
 body::-webkit-scrollbar { width: 10px; }
@@ -44,13 +44,10 @@ body::-moz-scrollbar-track { background-color: white;border-radius: 2px;box-shad
 body::-webkit-scrollbar-thumb { border-radius: 5px; background-color: gray; }
 body::-moz-scrollbar-thumb { border-radius: 5px; background-color: gray; }
 .bg{ background-color: var(--white);}
-.rose{ background-color: #ffd3b4}
-.text-rose{ color: #ffd3b4}
 .logo{ font-size:30px; font-weight:500; margin-left:2rem}
 .usser>a { text-decoration:none; color:black; width:40px; height:40px;  }
 .usser , .cart, .store , .login{ width:47px; height:47px; cursor: pointer; }
 .usser:hover , .cart:hover , .store:hover , .login:hover { background-color: rgba(0 0 0/55%); color:white }
-
 .store>a:hover { color:white ; }
 h1, h2, h3, h4, h5 , h6 { font-family: 'Ubuntu', sans-serif; font-weight:normal; }
 main{ margin:2rem;}
