@@ -12,27 +12,26 @@
 
     </head>
     <body>
-      
       @auth
-      @if(Auth::user()->role === "super admin")
-      <div class="is_superuser position-fixed text-light">
-        <div id='is_superuser_box' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
-          <a href="" class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center" title='Products API'>
-            <i class="fa-regular fa-plus fs-3 "></i>
-          </a>
-          <a href="" title='All Message From User' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-envelope fs-5"></i>
-          </a>
-          <a href="{{ route('admin_home') }}" title='Admin' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-unlock"></i>
-          </a>
-        </div>
-        
-        <button class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center" title='Just for admin' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
-          <i class="fa-solid fa-lock fs-5"></i>
-        </button>
-      </div>
-      @endif
+        @if(Auth::user()->role === "super admin" || Auth::user()->role === "admin")
+          <div class="is_superuser position-fixed text-light">
+            <div id='is_superuser_box' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
+              <a href="" class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center" title='Products API'>
+                <i class="fa-regular fa-plus fs-3 "></i>
+              </a>
+              <a href="" title='All Message From User' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-envelope fs-5"></i>
+              </a>
+              <a href="{{ route('admin_home') }}" title='Admin' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-unlock"></i>
+              </a>
+            </div>
+
+            <button class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center" title='Just for admin' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
+              <i class="fa-solid fa-lock fs-5"></i>
+            </button>
+          </div>
+        @endif
       @endauth
       
       <header class='d-flex justify-content-around align-items-center header'>

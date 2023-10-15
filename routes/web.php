@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
 use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;

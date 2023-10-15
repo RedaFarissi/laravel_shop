@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class ControllerAdminCategory extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     private function check_if_user(){
         $userId = Auth::user();

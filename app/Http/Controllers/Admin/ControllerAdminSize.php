@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 
 class ControllerAdminSize extends Controller{
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
-
     private function check_if_user(){
         $userId = Auth::user();
         $user = User::find($userId->id);

@@ -16,14 +16,11 @@ class controllerProduct extends Controller{
        return view('products.index' , ['products'=> Product::with('sizes')->get()]);
     }
 
-    // go to create.blade.php in views/home/create.blade.php
     public function create(){
         return view('products.create', ["categories"=>Category::all() , "sizes"=>Size::all()]);
     }
     
-    //handle create product 
     public function store(Request $request){ 
-        //check for validity  
         $request->validate([
             'name' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
@@ -39,11 +36,13 @@ class controllerProduct extends Controller{
         $product->description = strip_tags($request->input('description'));
         $product->price = strip_tags($request->input('price'));
         $product->available = strip_tags($request->input('available'));
-        $product->choices = strip_tags($request->input('choices'));
         $product->category_id = strip_tags($request->input('category_id'));
-        
         $product->image = $imageName; // Save only the image name
         $product->save();
+
+        //Attach selected sizes to the product 
+        $product->sizes()->attach($request->input('sizes'));
+        
         return redirect()-> route('products.index');
     }
 

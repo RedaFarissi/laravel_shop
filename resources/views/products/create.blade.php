@@ -22,9 +22,7 @@
                     <tr >
                        <td colspan="2">  
                             @error('name')   
-                             <div class="alert alert-danger mt-2">
-                                {{$message}} 
-                             </div>                
+                             <ul><li class="text-danger"> {{$message}} </ul></li>               
                             @enderror
                         </td> 
                     </tr>
@@ -36,9 +34,7 @@
                     <tr>
                        <td colspan="2">  
                            @error('image')
-                             <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                             </div>                
+                           <ul><li class="text-danger"> {{$message}} </ul></li>
                            @enderror
                         </td> 
                     </tr>
@@ -46,9 +42,9 @@
                     <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
                         <td class="lavel-create-width"><b class="d-block mt-2 mb-2">Category :</b></td>
                         <td> 
-                            <select id="category_id" name="category_id" class="input-select mt-2 mb-2">
+                            <select id="category_id" name="category_id" class="input-select text-dark mt-2 mb-2">
                                 @foreach ($categories as $category)
-                                    <option value="{{$category->id}}"> {{$category->name}} </option>
+                                    <option class="text-dark" value="{{$category->id}}"> {{$category->name}} </option>
                                 @endforeach
                             </select> 
                         </td>
@@ -56,9 +52,7 @@
                     <tr>
                        <td colspan="2">  
                             @error('category_id')
-                                <div class="alert alert-danger mt-2">
-                                   {{$message}}  
-                                </div>                
+                            <ul><li class="text-danger"> {{$message}} </ul></li>               
                             @enderror
                         </td> 
                     </tr>
@@ -72,9 +66,7 @@
                     <tr>
                        <td colspan="2">  
                             @error('description')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul><li class="text-danger"> {{$message}} </ul></li>
                             @enderror
                         </td> 
                     </tr>
@@ -86,10 +78,8 @@
                     </tr>
                     <tr>
                        <td colspan="2">  
-                            @error('price')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            @error('price') 
+                                <ul><li class="text-danger"> {{$message}} </ul></li>
                             @enderror
                         </td> 
                     </tr>
@@ -110,9 +100,7 @@
                     <tr>
                        <td colspan="2">  
                             @error('sizes')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul><li class="text-danger"> {{$message}} </ul></li>                 
                             @enderror
                         </td> 
                     </tr>
@@ -130,9 +118,7 @@
                     <tr>
                        <td colspan="2">  
                             @error('available')
-                              <div class="alert alert-danger mt-2">
-                                {{$message}}  
-                              </div>                  
+                            <ul><li class="text-danger"> {{$message}} </ul></li>                 
                             @enderror
                         </td> 
                     </tr>
@@ -141,7 +127,7 @@
 
                 <hr/>
                 <div class="alert bg-light">
-                    <button type="submit" value="true" name="submit" class="btn bg-blue text-light px-4" >Save</button>
+                    <button type="submit" value="true" name="submit" class="btn rose text-dark px-4" >Save</button>
                 </div>
             </div>
         </form>

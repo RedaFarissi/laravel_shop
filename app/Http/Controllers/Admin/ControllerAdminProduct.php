@@ -11,15 +11,8 @@ use Illuminate\Http\Request;
 
 class ControllerAdminProduct extends Controller{
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
-
-    private function check_if_user(){
-        $userId = Auth::user();
-        $user = User::find($userId->id);
-        return ($user->isUser())?True:False;
-    }
-
     public function admin_products_list(){
         return view('admin.products.list' , ["products"=>Product::with('sizes')->get()]);
     }
