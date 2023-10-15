@@ -13,26 +13,38 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
-#admin edit
-use App\Http\Requests\ProfileUpdateRequest;
+
 
 class ControllerAdmin extends Controller{
     public function __construct(){
         $this->middleware('auth');
     }
+
+    private function check_if_user(){
+        $userId = Auth::user();
+        $user = User::find($userId->id);
+        if($user->isUser()){
+            return True;
+        } 
+    }
+
     public function admin_home(){
-        return view('admin.index');
+        $is_user = $this->check_if_user();
+        return ($is_user)?redirect()-> route('home'):view('admin.index');
     }
 
     /*********************** users *************************/
 
     public function admin_users_list(){
-        return view('admin.users.list' , ["users"=>User::all()]);
+        $is_user = $this->check_if_user();
+        return ($is_user)?redirect()-> route('home'):view('admin.users.list' , ["users"=>User::all()]);
     }
     public function admin_user_create_views(){
-        return view('admin.users.create');
+        $is_user = $this->check_if_user();
+        return ($is_user)?redirect()-> route('home'):view('admin.users.create');
     }
     public function admin_user_create_store(Request $request){
+        $is_user = $this->check_if_user();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
@@ -49,6 +61,7 @@ class ControllerAdmin extends Controller{
         return redirect()-> route( ($request->input('submit') == "false")?"admin_user_create_views": "admin_users_list"); 
     }
     public function admin_user_edit_views($id){
+        $is_user = $this->check_if_user();
         return view('admin.users.edit' , ["user"=>User::findOrFail($id)]);
     }
     public function admin_user_delete($id){

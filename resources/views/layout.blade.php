@@ -14,6 +14,7 @@
     <body>
       
       @auth
+      @if(Auth::user()->role === "super admin")
       <div class="is_superuser position-fixed text-light">
         <div id='is_superuser_box' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
           <a href="" class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center" title='Products API'>
@@ -31,6 +32,7 @@
           <i class="fa-solid fa-lock fs-5"></i>
         </button>
       </div>
+      @endif
       @endauth
       
       <header class='d-flex justify-content-around align-items-center header'>

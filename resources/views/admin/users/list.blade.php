@@ -42,6 +42,7 @@
                             <th class="white"> Name </th>
                             <th class="white"> Email </th>
                             <th class="white"> Email verified</th>
+                            <th class="white"> Role</th>
                             <th class="white"> Created at </th>
                             <th class="white"> Updated at </th>
                         </tr>
@@ -51,7 +52,7 @@
                                 <td><a href="{{ route('admin_user_edit_views' , [$user->id]) }}" class="blue">{{$user->name}} <a></td>
                                 <td class="white"> {{$user->email}} </td>
                                 <td class="white" > @if(is_null($user->email_verified_at)) <span class="text-danger">not verified</span> @else <span class="text-success">verified</span> @endif</td>
-                                
+                                <td class="white"> {{$user->role}} </td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $user->created_at }}</td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $user->updated_at }}</td>
                             </tr>
