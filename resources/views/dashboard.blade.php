@@ -10,7 +10,7 @@
            
                 <div class="p-6 text-gray-900">
                     
-                    <div class="row justify-content-center p-0">
+                    <div class="row p-0">
                         @foreach ($products as $product )
                             <div class="col-md-4 p-0 mb-4 m-2">
                                 <div class='cart-product m-auto border p-2 rounded'>

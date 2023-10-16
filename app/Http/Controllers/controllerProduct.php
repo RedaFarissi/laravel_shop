@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Size;
+use Illuminate\Support\Facades\Auth;
 
 class controllerProduct extends Controller{
     public function __construct(){
@@ -17,13 +18,16 @@ class controllerProduct extends Controller{
     }
 
     public function create(){
+        
         return view('products.create', ["categories"=>Category::all() , "sizes"=>Size::all()]);
     }
     
     public function store(Request $request){ 
+        
         $request->validate([
             'name' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'category_id' => 'required|integer', 
             'description' => 'required|string',
             'price' => 'required|integer',
             'available' => 'required|boolean',
@@ -38,6 +42,7 @@ class controllerProduct extends Controller{
         $product->available = strip_tags($request->input('available'));
         $product->category_id = strip_tags($request->input('category_id'));
         $product->image = $imageName; // Save only the image name
+        $product->user_id = Auth::user()->id; // Save only the image name
         $product->save();
 
         //Attach selected sizes to the product 

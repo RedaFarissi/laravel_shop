@@ -20,15 +20,18 @@ class ControllerAdminUser extends Controller {
     }
     public function admin_user_create_store(Request $request){
         $request->validate([
+            'role' => ['required', 'string', 'max:5'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+
         $user = User::create([
             'name' => strip_tags($request->name),
             'email' => strip_tags($request->email),
             'password' => Hash::make($request->password),
+            'role' => strip_tags($request->role),
         ]);
         return redirect()-> route( ($request->input('submit') == "false")?"admin_user_create_views": "admin_users_list"); 
     }

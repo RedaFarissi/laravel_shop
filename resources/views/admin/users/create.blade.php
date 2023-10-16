@@ -20,6 +20,18 @@
             <div class="mb-5 mb-4" >
             <h5 class="font-weight-3 mb-5">Add User</h5>
             <table class='table-create'> 
+
+                <tr class="mb-2">
+                    <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Role :</b></td>
+                    <td> 
+                        <select name="role" id="role" class="input-select ps-2 pe-5">
+                            <option class="user"> user </option>
+                            <option class="user"> admin </option>
+                        </select>
+                    </td>
+                </tr>
+                
+
                 <tr class="mb-2">
                     <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Name :</b></td>
                     <td> 
@@ -35,8 +47,6 @@
                     </td> 
                 </tr>       
 
-
-               
                 <tr class="mb-2">
                     <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Email :</b></td>
                     <td> 
