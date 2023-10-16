@@ -7,10 +7,15 @@ use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
 use App\Http\Controllers\ControllerCart;
+use App\Http\Controllers\ControllerDashboard;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::controller(ControllerDashboard::class)->group(function(){
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', "dashboard")->name('dashboard');
+    });
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

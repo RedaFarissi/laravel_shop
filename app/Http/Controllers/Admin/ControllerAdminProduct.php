@@ -16,15 +16,20 @@ class ControllerAdminProduct extends Controller{
     public function admin_products_list(){
         return view('admin.products.list' , ["products"=>Product::with('sizes')->get()]);
     }
-     
     public function admin_product_create_views(){
-        return view('admin.products.create' , ["categories"=>Category::all() , "sizes"=>Size::all()] );
+        return view('admin.products.create' , [
+            "categories"=>Category::all() , 
+            "sizes"=>Size::all() ,
+            "users"=>User::all(),
+        ]);
     }
     public function admin_product_create_store(Request $request){ 
         //dd($request->input('sizes'));
         $request->validate([
+            'user_id' => 'required|integer',
             'name' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'category_id' => 'required|integer', 
             'description' => 'required|string',
             'price' => 'required|integer',
             'available' => 'required|boolean',
@@ -33,11 +38,13 @@ class ControllerAdminProduct extends Controller{
         $imageName = basename($imagePath); // Get the file name without the path
     
         $product = new Product();
+        $product->user_id = strip_tags($request->input('user_id'));
         $product->name = strip_tags($request->input('name'));
         $product->description = strip_tags($request->input('description'));
         $product->price = strip_tags($request->input('price'));
         $product->available = strip_tags($request->input('available'));
         $product->category_id = strip_tags($request->input('category_id'));
+        
         $product->image = $imageName; // Save only the image name
         $product->save();
 

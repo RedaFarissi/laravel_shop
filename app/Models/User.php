@@ -21,6 +21,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+    
     public function isSuperAdmin(){
         return $this->role === 'super admin';
     }

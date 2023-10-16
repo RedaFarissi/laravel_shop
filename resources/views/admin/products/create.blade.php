@@ -20,10 +20,28 @@
             <div class="mb-5 mb-4" >
                 <h5 class="font-weight-3 mb-5">Add product</h5>
                 <table class='table-create'>
-                    <tr class="mb-2">
-                            <td class="lavel-create-width td">
-                                <b class="d-block mt-2 mb-2">Name :</b>
-                            </td>
+                    <tr>
+                        <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">User :</b></td>
+                        <td class="td"> 
+                            <select id="user_id" name="user_id" class="input-select mt-2 mb-2">
+                                <option value="" selected> ........... </option>
+
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}"> {{$user->name}} </option>
+                                @endforeach
+                            </select> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td" colspan="2">  
+                             @error('user_id')   
+                             <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
+                             @enderror
+                         </td> 
+                    </tr>
+
+                    <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
+                            <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Name :</b> </td>
                             <td class="td"> 
                                 <input 
                                     type="text" value="{{old('name')}}"
@@ -57,6 +75,7 @@
                         <td class="lavel-create-width td"><b class="d-block mt-2 mb-2">Category :</b></td>
                         <td class="td"> 
                             <select id="category_id" name="category_id" class="input-select mt-2 mb-2">
+                                <option value="" selected> ........... </option>
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}"> {{$category->name}} </option>
                                 @endforeach

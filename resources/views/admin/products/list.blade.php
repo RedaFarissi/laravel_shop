@@ -39,6 +39,7 @@
                             <th style="width:30px"> 
                                 <input type="checkbox" onclick="selectAll()" id="SelectAll" name="SelectAll"  value="checked">
                             </th>
+                            <th class="white"> user </th>
                             <th class="white"> Name </th>
                             <th class="white"> Price </th>
                             <th class="white"> Category</th>
@@ -50,6 +51,7 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td><input type="checkbox" onclick="selectOne()" name="selected_items[]" class="selected_items" value="{{$product->id}}" /></td>
+                                <td class="white"> {{$product->user->name}} </td>
                                 <td><a href="{{ route('admin_product_edit_views' , [$product->id]) }}" class="blue">{{$product->name}} <a></td>
                                 <td class="white"> {{$product->price}} </td>
                                 <td class="white"> {{$product->category->name}} </td>
