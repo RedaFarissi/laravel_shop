@@ -24,18 +24,20 @@
                                     <b>{{ (strlen($product->name) > 30) ? substr($product->name, 0, 30) . "..." : $product->name }}</b>
                                 </a>
                             </h6>
-                            <h6 class='d-flex justify-content-between align-items-center mt-2 @if(count($product->sizes)<=0) mb-2 @endif'>
-                              {{ $product->price }} $
+                            <h6 class='d-flex justify-content-between align-items-center mt-2'>
+                                <div class="@if(count($product->sizes)<=0) mb-2 @endif">{{ $product->price }} $ </div>
+                                <a href="{{ route('dashboard_product_delete' , $product->id) }}" class="Delete rounded-circle">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
                             </h6>
                             @if(count($product->sizes)>0)
                               <h6 class='d-flex flex-wrap'>
                                   Sizes : &nbsp;
                                 @foreach ($product->sizes as $size)
-                                  <kbd>{{ $size->name }}</kbd>&nbsp;
+                                  <kbd class="kbd">{{ $size->name }}</kbd>&nbsp;
                                 @endforeach
                               </h6>
                             @endif
-
                     </div>
                 </div>
             @endforeach

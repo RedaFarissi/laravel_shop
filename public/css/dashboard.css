@@ -17,3 +17,20 @@ body::-moz-scrollbar-thumb { border-radius: 5px; background-color: gray; }
     border: 2px solid black;
     font-size:13px
 }
+
+.Delete{
+    width: 25px;
+    height: 25px;
+    border: 0.3px solid rgba(0 0 0/35%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+.Delete>i{
+    font-size: 14px;
+}
+.kbd{
+    font-size: 12px;
+}

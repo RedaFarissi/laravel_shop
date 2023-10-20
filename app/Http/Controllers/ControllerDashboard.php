@@ -15,5 +15,11 @@ class ControllerDashboard extends Controller
             'products'=> Product::productsFromSpecificUser($auth->id)->with('sizes')->get()
         ]);
     }
-    
+
+
+    public function dashboard_product_delete($id) {
+        $to_delete = Product::findOrFail($id);
+        $to_delete->delete();
+        return redirect()->route('dashboard');
+    }
 }

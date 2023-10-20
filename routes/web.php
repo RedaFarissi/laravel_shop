@@ -13,6 +13,7 @@ use App\Http\Controllers\ControllerDashboard;
 Route::controller(ControllerDashboard::class)->group(function(){
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', "dashboard")->name('dashboard');
+        Route::get('dashboard/product/delete/{id}', "dashboard_product_delete")->name('dashboard_product_delete');
     });
 });
 

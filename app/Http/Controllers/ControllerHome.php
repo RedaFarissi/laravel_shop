@@ -11,7 +11,7 @@ class ControllerHome extends Controller {
         return view("home.index" , [
             "products" => Product::with('sizes')->where('available', true)->get()->reverse(),
             "categories" => Category::all() ,
-        ] ); 
+        ] );
     }
     public function home_category_by_id($category_id=null){
         return view("home.index" , [
