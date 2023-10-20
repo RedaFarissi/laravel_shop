@@ -16,7 +16,7 @@
         @if(Auth::user()->role === "super admin" || Auth::user()->role === "admin")
           <div class="is_superuser position-fixed text-light">
             <div id='is_superuser_box' onmouseover="fa_lock_over()" onmouseout="fa_lock_out()">
-              <a href="" title='All Message From User' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
+              <a href="{{ route('contact_list') }}" title='All Message From User' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
                 <i class="fa-solid fa-envelope fs-5"></i>
               </a>
               <a href="{{ route('admin_home') }}" title='Admin' class="rose btn-fa btn rounded-circle d-flex justify-content-center align-items-center">
@@ -41,7 +41,7 @@
           <a href="{{ route('home') }}" class='col-2 text-center text-dark hedaer-center-item'> Home </a>
           <a href="{{ route('products.index') }}" class='col-2 text-center text-dark hedaer-center-item'> Products </a>
           <a href="{{ route('about') }}" class='col-2 text-center text-dark hedaer-center-item'> About </a>
-          <a href="{{ route('contact') }}" class='col-2 text-center text-dark hedaer-center-item'> Contact </a>
+          <a href="{{ route('contact_create') }}" class='col-2 text-center text-dark hedaer-center-item'> Contact </a>
         </div>
 
         <div class='header-right d-flex align-items-center'>

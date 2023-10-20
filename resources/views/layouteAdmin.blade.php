@@ -9,21 +9,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ url('css/admin/home.css') }}">
         @yield('head')
-        <style>  
-          *{ font-size:99%}  
+        <style>
+          *{ font-size:99%}
         </style>
     </head>
     <body>
-    
+
         <nav class="header px-5 container-fluid">
               <a class="header-logo navbar-brand h6 font-weight-4" href="{{ route('admin_home') }}">
-                 Administration 
+                 Administration
               </a>
               <div class="d-flex header-link align-items-center">
-                WELCOME, <b><b>Name</b></b>. <a href='{{route('home')}}' title='Home'>VIEW SITE</a> / <a href='#' title='change password'>CHANGE PASSWORD</a> / 
+                WELCOME, <b><b>{{Auth::user()->name}}</b></b>. <a href='{{route('home')}}' title='Home'>VIEW SITE</a> / <a href='#' title='change password'>CHANGE PASSWORD</a> /
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
-                  <button type="submit" class="bg-blue white font-weight-3 under-line" style=";outline:none;border:none">Logout</button> 
+                  <button type="submit" class="bg-blue white font-weight-3 under-line" style=";outline:none;border:none">Logout</button>
                 </form>
               </div>
         </nav>
@@ -44,38 +44,38 @@
                       <td class="w-75"><a href='{{ route('admin_users_list') }}' class="link-blue">Users</a></td>
                       <td>
                         <a href='{{ route('admin_user_create_views') }}' class="link-blue">
-                          <div class="d-flex-center-center"> 
+                          <div class="d-flex-center-center">
                               <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
                           </div>
                         </a>
                       </td>
-                      <td  class="aside-change-icon"> 
+                      <td  class="aside-change-icon">
                         <a href='{{ route('admin_users_list') }}' class="link-blue">
-                          <div class="d-flex-center-center"> 
+                          <div class="d-flex-center-center">
                              <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
                           </div>
                         </a>
                       </td>
                   </tr>
                  </table>
-               
+
                  <table class="table table-aside mb-5">
                   <tr><h6 class="table-heading p-2"> AUTHENTICATION AND AUTHORIZATION </h6></tr>
                   <tr>
                       <td class="w-75"><a href='{{ route('admin_products_list') }}' class="link-blue">Products</a></td>
                       <td>
                         <a href='{{ route('admin_product_create_views') }}' class="link-blue">
-                          <div class="d-flex-center-center"> 
+                          <div class="d-flex-center-center">
                               <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
                           </div>
-                        </a>  
+                        </a>
                       </td>
-                      <td class="aside-change-icon"> 
+                      <td class="aside-change-icon">
                         <a href='{{ route('admin_products_list') }}' class="link-blue">
-                          <div class="d-flex-center-center"> 
+                          <div class="d-flex-center-center">
                             <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
                           </div>
-                        </a>  
+                        </a>
                       </td>
                   </tr>
                   <tr>
@@ -85,11 +85,11 @@
                         <div class="d-flex-center-center">
                           <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
                         </div>
-                      </a>  
+                      </a>
                     </td>
-                    <td class="aside-change-icon"> 
+                    <td class="aside-change-icon">
                       <a href='{{ route('admin_categories_list') }}' class="link-blue">
-                        <div class="d-flex-center-center"> 
+                        <div class="d-flex-center-center">
                            <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
                         </div>
                       </a>
@@ -102,11 +102,11 @@
                         <div class="d-flex-center-center">
                           <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
                         </div>
-                      </a>  
+                      </a>
                     </td>
-                    <td class="aside-change-icon"> 
+                    <td class="aside-change-icon">
                       <a href='{{ route('admin_sizes_list') }}' class="link-blue">
-                        <div class="d-flex-center-center"> 
+                        <div class="d-flex-center-center">
                            <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
                         </div>
                       </a>
@@ -115,14 +115,14 @@
                 </table>
               </div>
             </aside>
-          
+
             @yield('content')
-          
+
           </section>
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{{ url('js/bootstrap.js') }}"></script>
         {{-- <script>
           document.body.style = "height:200vh"

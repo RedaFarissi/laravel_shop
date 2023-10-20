@@ -3,7 +3,7 @@
 @section('title','MyShop')
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/home/contact.css') }}">
+    <link rel="stylesheet" href="{{ url('css/contact/contact.css') }}">
 @endsection
 
 @section('content')
@@ -14,7 +14,8 @@
     <h6> GET AN EXPERIENCE </h6>
     <div class='text-secondary'> Response guaranteed within 48 hours! </div>
 
-    <form action="" method="POST">
+    <form action="{{ route('contact_store') }}" method="POST">
+        @csrf
         <input type='text' name='subject' class="subject" placeholder='Title of the email (subject)' required /><br>
         <input type='email' name='email'  placeholder='Your email' required/><br>
         <textarea name='message' placeholder='Your message' class='textarea'> </textarea>
@@ -23,21 +24,21 @@
 
     <div class="contact_box">
         <h5 id="collection" class='my-3 ms-3'>MY SHOP</h5>
-        <div class='d-flex'> 
-            <i class="fa-regular fa-location-dot mt-1 mx-3"></i> 
+        <div class='d-flex'>
+            <i class="fa-regular fa-location-dot mt-1 mx-3"></i>
             <p>DR JDID, Rue 55 No 20 Sidi Slimane</p>
         </div>
-        <div class='d-flex'> 
+        <div class='d-flex'>
             <i class="fa-solid fa-phone  mt-1 mx-3"></i>
-            <p> +212 5 00 00 00 00 </p>         
+            <p> +212 5 00 00 00 00 </p>
         </div>
-        <div class='d-flex'> 
+        <div class='d-flex'>
             <i class="fa-solid fa-phone  mt-1 mx-3"></i>
-            <p> +212 6 06 70 56 46 </p>         
+            <p> +212 6 06 70 56 46 </p>
         </div>
-        <div class='d-flex'> 
+        <div class='d-flex'>
             <i class="fa-solid fa-envelope mt-1 mx-3"></i>
-            <p> redaesskouni@gmail.com </p>         
+            <p> redaesskouni@gmail.com </p>
         </div>
         <div class='d-flex justify-content-center align-items-center'>
             <i class="fa-brands fa-facebook fs-3"></i>

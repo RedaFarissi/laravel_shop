@@ -36,7 +36,11 @@ Route::controller(ControllerHome::class)->group(function(){
 });
 
 Route::controller(ControllerContact::class)->group(function(){
-    Route::get('/contact', "contact")->name('contact');
+    Route::middleware('auth')->group(function () {
+        Route::get('/contact/list/', "list")->middleware('super_admin')->name('contact_list');
+        Route::get('/contact/create', "create")->name('contact_create');
+        Route::post('/contact/store/', "store")->name('contact_store');
+    });
 });
 
 
