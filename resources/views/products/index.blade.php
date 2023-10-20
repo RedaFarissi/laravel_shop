@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<main class='main'>       
+<main class='main'>
   <div class="row justify-content-center p-0 mb-5 pb-5">
       @foreach ($products as $product )
           <div class="col-md-4 p-0 mb-4">
@@ -18,14 +18,14 @@
 
                   <a href="{{ route('products.show', [$product->id]) }}">
                       <h6 class="@if(count($product->sizes)<=0) mb-2 @endif">
-                          <b>{{ $product->name }}</b>
+                          <b>{{(strlen($product->name) > 30) ? substr($product->name, 0, 30) . "..." : $product->name }}</b>
                       </h6>
-                      <h6 class='d-flex justify-content-between align-items-center mt-2 @if(count($product->sizes)<=0) mb-2 @endif'> 
+                      <h6 class='d-flex justify-content-between align-items-center mt-2 @if(count($product->sizes)<=0) mb-2 @endif'>
                         {{ $product->price }} $
                       </h6>
                       @if(count($product->sizes)>0)
-                        <h6 class='d-flex flex-wrap'> 
-                            Sizes : &nbsp;  
+                        <h6 class='d-flex flex-wrap'>
+                            Sizes : &nbsp;
                           @foreach ($product->sizes as $size)
                             <kbd>{{ $size->name }}</kbd>&nbsp;
                           @endforeach
@@ -34,7 +34,7 @@
                   </a>
               </div>
           </div>
-        @endforeach 
+        @endforeach
   </div>
 </main>
 @endsection

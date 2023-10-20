@@ -9,24 +9,24 @@
 @section('content')
 
 <div class="container-fluid row">
-    <img src="{{ asset('images/PLGraphic.png') }}" class="col-md-6 imge" />
+    <img src="{{ asset('images/Kayo3PLGraphic.png') }}" class="col-md-6 imge" />
     <div class="col-md-6 bg d-flex justify-content-center align-items-center box-about">
         <div>
             <p class='d-flex'>
-                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <p class='d-flex'>
-                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <p class='d-flex'>
-                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <p class='d-flex'>
-                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                <i class="fa-solid fa-check fa_check rose fs-2 me-3"></i>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
         </div>
     </div>

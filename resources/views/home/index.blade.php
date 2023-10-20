@@ -45,7 +45,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-    </div>                        
+    </div>
   </section>
 
   <section id="container-home">
@@ -64,11 +64,11 @@
         </div>
     </aside>
 
-   
-      
-  
+
+
+
     <div class='main_products pt-3' id="product-box">
-     
+
         <div class="row align-items-center">
             @foreach ($products as $product )
 
@@ -79,23 +79,23 @@
                       <a href="{{ route('products.show', [$product->id]) }}" >
                         <img class='card-img-top w-100 object-fit-cover' src="{{ asset('storage/images/' . $product->image) }}" />
                       </a>
-                      
+
                       <div class="card-body" style>
                         <div>
                           <a href="{{ route('products.show', [$product->id]) }}" class="@if(count($product->sizes)<=0)d-block pb-2 @endif">
-                            <b>{{ $product->name }}</b>
+                            <b>{{ (strlen($product->name) > 30) ? substr($product->name, 0, 30) . "..." : $product->name }}</b>
                           </a>
                         </div>
-                        <div class="mt-2 d-flex justify-content-between me-1 align-items-center @if(count($product->sizes)<=0) pb-2 @endif"> 
-                          <div class="d-flex justify-content-between"> 
-                            <b>Price : {{ $product->price }}$ </b> 
+                        <div class="mt-2 d-flex justify-content-between me-1 align-items-center @if(count($product->sizes)<=0) pb-2 @endif">
+                          <div class="d-flex justify-content-between">
+                            <b>Price : {{ $product->price }}$ </b>
                           </div>
                           <div class='like rounded border'>
-                            <a 
+                            <a
                                 class='add-like-product Like btn'>
                                 <i class="fa-sharp fa-solid fa-thumbs-up like-i text-primary"></i>
                                 <b class='total-like'> 0 </b>
-                            </a> 
+                            </a>
                           </div>
                         </div>
 
@@ -104,14 +104,14 @@
                             <p class="card-text d-flex align-items-center flex-wrap"><b>Sizes :</b> &nbsp;
                               @foreach ($product->sizes as $size)
                               <span class="badge bg-dark me-1">{{ $size->name }}</span>
-                              @endforeach                           
+                              @endforeach
                             </p>
                           @endif
                         </div>
                       </div>
                     </div>
-                     
-                      
+
+
                   </div>
               </div>
             @endforeach

@@ -31,10 +31,6 @@ class ProductsSeeder extends Seeder{
 
             $existingProduct = Product::where('name', $item['name'])->where('price', $item['price'])->first();
             if ($existingProduct === null) {
-
-                $imagePath = 'images/' . $item['image'];
-                Storage::copy($imagePath, 'public/images/' . $item['image']);
-
                 Product::create([
                     "name"=>$item['name'],
                     "image"=> $item['image'],
