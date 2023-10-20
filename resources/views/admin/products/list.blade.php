@@ -3,11 +3,11 @@
 @section('title','Products list')
 
 @section('path')
-    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_categories_list') }}'>Products</a> > list
+    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_products_list') }}'>Products</a> > list
 @endsection
 
 @section('head')
-    <link rel="stylesheet" href="{{ url('css/admin/products/list.css') }}">       
+    <link rel="stylesheet" href="{{ url('css/admin/products/list.css') }}">
 @endsection
 
 @section('size',"aside-list")
@@ -36,7 +36,7 @@
                 <div class="overflow-x-auto">
                     <table class="table table-list-width">
                         <tr>
-                            <th style="width:30px"> 
+                            <th style="width:30px">
                                 <input type="checkbox" onclick="selectAll()" id="SelectAll" name="SelectAll"  value="checked">
                             </th>
                             <th class="white"> user </th>
@@ -55,15 +55,15 @@
                                 <td><a href="{{ route('admin_product_edit_views' , [$product->id]) }}" class="blue">{{$product->name}} <a></td>
                                 <td class="white"> {{$product->price}} </td>
                                 <td class="white"> {{$product->category->name}} </td>
-                                <td class="white"> 
+                                <td class="white">
                                     @foreach ($product->sizes as $size)
                                         <kbd> {{ $size->name }}</kbd>
                                     @endforeach
                                  </td>
-                                <td class="white"> 
-                                    @if($product->available===1) 
-                                        <input type="checkbox" checked/> 
-                                    @endif 
+                                <td class="white">
+                                    @if($product->available===1)
+                                        <input type="checkbox" checked/>
+                                    @endif
                                 </td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $product->created_at }}</td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $product->updated_at }}</td>
@@ -72,12 +72,12 @@
                     </table>
                 </div>
 
-                <div class="font-weight-3 text-secondary mt-4 fs-6" style="margin-bottom:-9px"> 
+                <div class="font-weight-3 text-secondary mt-4 fs-6" style="margin-bottom:-9px">
                     {{count($products)}}  @if (count($products)>1) products @else product @endif
                 </div>
                 <hr/>
             </div>
-       
+
         </form>
     </div>
 </div>
@@ -86,20 +86,20 @@
 <script>
 $(document).ready(function () {
     $("#delete_all_form").on("submit", function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
         var selectedValue = $("#Action").val();
         if (selectedValue === "delete_selected_products") {
-           this.submit(); 
+           this.submit();
         }else{
            this.reset();
         }
     });
-}); 
+});
 
 function selectOne(){
     const checkboxes = document.querySelectorAll('input[name="selected_items[]"]:checked');
     const numberOfSelectedValues = checkboxes.length;
-    document.getElementById('number_select').innerHTML = numberOfSelectedValues  
+    document.getElementById('number_select').innerHTML = numberOfSelectedValues
 }
 
 
