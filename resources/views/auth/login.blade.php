@@ -16,25 +16,25 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div>
-                        <input 
+                        <input
                             type="email" name="email" value="{{ old('email') }}" required
-                            autofocus autocomplete="username"
+                            autofocus autocomplete="email" placeholder="email"
                         />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
                     <div>
-                        <input 
+                        <input
                             type="password" name="password" id="password"
-                            required autocomplete="current-password"  
+                            required autocomplete="current-password" placeholder="password"
                         />
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
                     <div class="d-flex align-items-center" style="height:30px; margin-top:-20px;margin-bottom:10px">
-                        <span class="me-2 mb-1">{{ __('Remember me') }}</span> 
-                        <input id="remember_me" type="checkbox" sty name="remember">
+                        <span class="me-2 mb-1">{{ __('Remember me') }}</span>
+                        <input id="remember_me" type="checkbox" checked name="remember">
                     </div>
-                    
+
                     <button type="submit" class="opacity rose">SUBMIT</button>
                 </form>
                 <div class="register-forget opacity">
@@ -46,5 +46,5 @@
             </div>
             <div class="circle circle-two"></div>
         </div>
-    </div>    
+    </div>
 @endsection
