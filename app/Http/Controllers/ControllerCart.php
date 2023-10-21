@@ -17,7 +17,6 @@ class ControllerCart extends Controller{
         ]);
 
         $product = Product::find($product_id);
-
         // Cart::create([
         //     'quantity' => $request->input('quantity'),
         // ]);
