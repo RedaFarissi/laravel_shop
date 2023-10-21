@@ -7,18 +7,27 @@
 @endsection
 
 @section('content')
-<table class="table">
-    <tr>
-        <th> Subject  <th>
-        <th> Email  <th>
-        <th> Message  <th>
-    </tr>
-    @foreach ($contacts as $contact )
-        <tr>
-            <td> {{ $contact->subject }} <td>
-            <td> {{ $contact->email }} <td>
-            <td class="w-50"> {{ $contact->message }} <td>
+<div class="container">
+    <table class="table m-2 border">
+        <tr class="alert-secondary p-2">
+            <th> Subject  </th>
+            <th> Email  </th>
+            <th> Message  </th>
+            <th> Response  </th>
         </tr>
-    @endforeach
-</table>
+        @foreach ($contacts as $contact )
+        <tr>
+            <td> {{ $contact->subject }} </td>
+            <td> {{ $contact->email }} </td>
+            <td> {{ $contact->message }} </td>
+            <td>
+                <form action="" method="POST">
+                    @csrf
+                    <textarea class="send_mail w-100">  </textarea>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+</div>
 @endsection
