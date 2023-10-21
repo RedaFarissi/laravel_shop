@@ -8,7 +8,7 @@ use App\Models\Cart;
 
 class ControllerCart extends Controller{
     public function cart_view(){
-        return view('cart.carts' , ["carts"=>Cart::all()]);
+        return view('cart.carts');
     }
 
     public function cart_add(Request $request, $product_id) {
@@ -18,12 +18,9 @@ class ControllerCart extends Controller{
 
         $product = Product::find($product_id);
 
-        Cart::create([
-            'image' => $product->image,
-            'name' => $product->name,
-            'price' => $product->price,
-            'quantity' => $request->input('quantity'),
-        ]);
-        return redirect()->route('cart_view')->with('success', 'Product added to cart');
+        // Cart::create([
+        //     'quantity' => $request->input('quantity'),
+        // ]);
+        return redirect()->route('cart_view');
     }
 }
