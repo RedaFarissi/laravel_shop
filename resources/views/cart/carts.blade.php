@@ -4,9 +4,15 @@
 
 @section('head')
     <style>
-      body{ background-color: var(--white)}
+      .card-payment{
+        border:9px solid var(--rose)
+      }
+      
       @media (min-width: 1025px) {
         .h-custom {  height: 100vh !important;  }
+      }
+      @media (max-width: 600px) {
+        .card-payment{ border:none;}
       }
   </style>
 @endsection
@@ -39,8 +45,6 @@
                   </div>
 
 
-
-
                   @foreach ($carts as $cart) 
                     <div class="card mb-3">
                       <div class="card-body">
@@ -61,7 +65,7 @@
                               <h5 class="fw-normal mb-0"> {{ $cart->quantity }}</h5>
                             </div>
                             <div style="width: 80px;">
-                              <h5 class="mb-0"> ${{ $cart->price }}</h5>
+                              <h5 class="mb-0"> ${{ $cart->price*$cart->quantity }}</h5>
                             </div>
                             <a href="#!" style="color: #cecece;">
                               <i class="fas fa-trash-alt text-danger"></i>
@@ -79,12 +83,11 @@
 
                 {{-- box --}}
                 <div class="col-lg-5">
-                  <div class="card text-dark rounded-3" style="border:9px solid var(--rose)">
+                  <div class="card card-payment text-dark rounded-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Card details</h5>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                          class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                        <x-application-logo class="text-gray-800" style="width: 35px" />
                       </div>
 
                       <p class="small mb-2">Card type</p>
@@ -120,7 +123,7 @@
                           <div class="col-md-6">
                             <div class="form-outline form-white">
                               <input type="password" id="typeText" class="form-control form-control-lg"
-                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                placeholder=";" size="1" minlength="3" maxlength="3" />
                               <label class="form-label" for="typeText">Cvv</label>
                             </div>
                           </div>
@@ -145,10 +148,10 @@
                         <p class="mb-2">$4818.00</p>
                       </div>
 
-                      <button type="button" class="btn rose btn-block btn-lg">
-                        <div class="d-flex justify-content-between">
-                          <span>$4818.00</span>
-                          <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                      <button type="button" class="btn rose btn-block btn-md">
+                        <div class="d-flex justify-content-between gap-1">
+                          <span>$4818.00</span> 
+                          <span> Checkout </span>
                         </div>
                       </button>
 
