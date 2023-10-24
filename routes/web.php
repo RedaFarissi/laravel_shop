@@ -46,5 +46,6 @@ Route::controller(ControllerContact::class)->group(function(){
 
 Route::controller(ControllerCart::class)->group(function(){
     Route::get('/cart', "cart_view")->name('cart_view');
+    Route::get('/cart/clear/', "cart_clear")->name('cart_clear');
     Route::post('/cart/add/{product_id}', "cart_add")->name('cart_add');
 });
