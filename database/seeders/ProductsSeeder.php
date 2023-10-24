@@ -17,8 +17,8 @@ class ProductsSeeder extends Seeder{
 
 
     public function run(): void {
-
-        $productData = json_decode(file_get_contents(storage_path('app/products.json')), true);
+        //$productData = json_decode(file_get_contents(storage_path('app/products.json')), true);
+        $productData = json_decode(file_get_contents(public_path('products-test/products.json')), true);
         $user = User::where('role' , "super admin")->first();
 
         foreach ($productData as $item) {
