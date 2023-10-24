@@ -17,12 +17,27 @@ class ProductsSeeder extends Seeder{
 
 
     public function run(): void {
-        //$productData = json_decode(file_get_contents(storage_path('app/products.json')), true);
         $productData = json_decode(file_get_contents(public_path('products-test/products.json')), true);
+         
+        
         $user = User::where('role' , "super admin")->first();
 
+        // create images folder inside storage/app/public/ if not exist
+        if (!Storage::exists('app/public/images')) {
+            Storage::makeDirectory('public/images', 0775, true);
+        }
+
         foreach ($productData as $item) {
-            // Check if the category already exists by name
+            //Copy images from public to storage to be readable in .blade.php
+        
+            if(!file_exists(storage_path('app/public/images/'.$item['image'])) ) {
+                copy(
+                    public_path('products-test/images-test/'.$item['image']) , 
+                    storage_path('app/public/images/'.$item['image']) 
+                );
+            } 
+
+            //Check if the category already exists by name
             $existingCategory = Category::where('name', $item['category'])->first();
             if ($existingCategory === null) {
                 $category = Category::create(['name'=> $item['category']]);
