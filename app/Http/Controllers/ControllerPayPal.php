@@ -8,7 +8,7 @@ use Srmklive\PayPal\Services\ExpressCheckout;
 class ControllerPayPal extends Controller {
      public function payment(){
         $data = [];
-        $data['product'] = [
+        $data['items'] = [
             [
                 'name' => 'Product 1',
                 'price' => 100,
