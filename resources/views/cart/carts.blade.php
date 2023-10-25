@@ -36,7 +36,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have 4 items in your cart</p>
+                      <p class="mb-0">You have {{count($carts)}} items in your cart</p>
                     </div>
                     <div>
                       <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
@@ -67,7 +67,7 @@
                             <div style="width: 80px;">
                               <h5 class="mb-0"> ${{ $cart->price*$cart->quantity }}</h5>
                             </div>
-                            <a href="#!" style="color: #cecece;">
+                            <a href="{{ route('delete_cart_id' , $cart->id) }}" style="color: #cecece;">
                               <i class="fas fa-trash-alt text-danger"></i>
                             </a>
                           </div>
@@ -82,7 +82,7 @@
 
 
                 {{-- box --}}
-                <div class="col-lg-5">
+                <div class="col-lg-5 align-self-center">
                   <div class="card card-payment text-dark rounded-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
@@ -133,7 +133,7 @@
 
                       <hr class="my-4">
 
-                      <div class="d-flex justify-content-between">
+                      {{-- <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
                         <p class="mb-2">$4798.00</p>
                       </div>
@@ -141,16 +141,16 @@
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Shipping</p>
                         <p class="mb-2">$20.00</p>
-                      </div>
+                      </div> --}}
 
                       <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">$4818.00</p>
+                        <p class="mb-2">Total {{-- (Incl. taxes) --}}</p>
+                        <p class="mb-2">${{$total_price}}</p>
                       </div>
 
                       <button type="button" class="btn rose btn-block btn-md">
                         <div class="d-flex justify-content-between gap-1">
-                          <span>$4818.00</span> 
+                          <span>${{$total_price}}</span> 
                           <span> Checkout </span>
                         </div>
                       </button>

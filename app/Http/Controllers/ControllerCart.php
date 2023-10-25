@@ -11,40 +11,55 @@ class ControllerCart extends Controller{
     public function cart_view(Request $request) {
         $session = $request->session();
         $carts = $session->get('cart', []);
-        //dd($carts , count($carts));
-        return view('cart.carts' , ["carts"=>$carts]);
+        $total_price = 0 ;
+        
+        foreach($carts as $cart) $total_price += $cart['price'] * $cart['quantity'] ;
+       
+        return view('cart.carts' , [ 
+            "carts"=>$carts , 
+            "total_price"=>$total_price 
+        ]);
     }
 
+    
     public function cart_add(Request $request, $product_id ) {
+        $session = $request->session();
         $request->validate([
             'quantity' => 'required|integer', 
         ]);
-        $session = $request->session();
         $products = $session->get('cart', []);
-        
         $product = Product::find($product_id);
-        // check if product all ready exist in cart
-       
-        foreach($products as $item){
-            if($item->id == $product->id){
-                $item->quantity = $request->input('quantity');
-                $session->put('cart', $products);
-                return redirect()->route('cart_view');
+        // Check if the product already exists in the cart
+        $productIndex = -1;
+        foreach($products as $index => $item){
+            if($item['id'] == $product->id){
+                $productIndex = $index;
                 break;
             }
         }
-
-        //add quantity to product
-        $product->quantity = $request->input('quantity');
-        
-        // Add the product to the list of products.
-        $products[count($products)] = $product;
+        if ($productIndex >= 0) {
+            // Update quantity if product exist in cart
+            $products[$productIndex]['quantity'] = $request->input('quantity');
+        } else {
+            $product->quantity = $request->input('quantity');
+            $products[count($products)] = $product;
+        }
         $session->put('cart', $products);
-
-        
-
         return redirect()->route('cart_view');
     }
+
+    public function delete_cart_id(Request $request, $cart_id) {
+        $session = $request->session();
+        $carts = $session->get('cart', []);
+        // Use array_filter to remove the matching cart by $cart_id
+        $carts = array_filter($carts, function ($cart) use ($cart_id) {
+            return $cart['id'] != $cart_id;
+        });
+        $session->put('cart', $carts);
+    
+        return redirect()->route('cart_view');
+    }
+    
 
     public function cart_clear(){
         $request = request();

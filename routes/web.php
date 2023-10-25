@@ -7,6 +7,7 @@ use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
 use App\Http\Controllers\ControllerCart;
+use App\Http\Controllers\ControllerOrder;
 use App\Http\Controllers\ControllerDashboard;
 
 
@@ -46,6 +47,13 @@ Route::controller(ControllerContact::class)->group(function(){
 
 Route::controller(ControllerCart::class)->group(function(){
     Route::get('/cart', "cart_view")->name('cart_view');
-    Route::get('/cart/clear/', "cart_clear")->name('cart_clear');
+    Route::get('/cart/delete/{cart_id}', "delete_cart_id")->name('delete_cart_id');
+    
     Route::post('/cart/add/{product_id}', "cart_add")->name('cart_add');
+    Route::get('/cart/clear/', "cart_clear")->name('cart_clear');
+});
+
+
+Route::controller(ControllerOrder::class)->group(function(){
+    Route::get('/order', "order_view")->name('order_view');
 });
