@@ -23,17 +23,15 @@ class SuperAdminSeeder extends Seeder{
         } while (!(filter_var($email, FILTER_VALIDATE_EMAIL) && strpos($email, "@gmail.com") !== false ));
        
         do {
-            if($is_password === true){
-                ($password !== $confirm_password)?
-                $this->command->error("password don't conformatible with confirm password."): 
-                $this->command->error("the password must have at least 8 char .");
-            }else {
-                $is_password = true ;
-            }
             echo "Create your Passord : ";
             $password = trim(fgets(STDIN));
             echo "Confirm Passord : ";
             $confirm_password = trim(fgets(STDIN));
+            if($is_password === true){
+                ($password !== $confirm_password)?  $this->command->error("password don't conformatible with confirm password."):$this->command->error("the password must have at least 8 char .");
+            }else {
+                $is_password = true ;
+            }
         } while ($password !== $confirm_password || strlen($password) < 7 );
       
         User::create([

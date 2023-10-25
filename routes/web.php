@@ -9,7 +9,7 @@ use App\Http\Controllers\controllerProduct;
 use App\Http\Controllers\ControllerCart;
 use App\Http\Controllers\ControllerOrder;
 use App\Http\Controllers\ControllerDashboard;
-
+use App\Http\Controllers\ControllerPayPal;
 
 Route::controller(ControllerDashboard::class)->group(function(){
     Route::middleware('auth')->group(function () {
@@ -57,3 +57,10 @@ Route::controller(ControllerCart::class)->group(function(){
 Route::controller(ControllerOrder::class)->group(function(){
     Route::get('/order', "order_view")->name('order_view');
 });
+
+
+ 
+ 
+Route::get('payment', [ControllerPayPal::class, 'payment'])->name('payment');
+Route::get('cancel', [ControllerPayPal::class, 'cancel'])->name('payment.cancel');
+Route::get('payment/success', [ControllerPayPal::class, 'success'])->name('payment.success');
