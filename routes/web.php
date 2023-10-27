@@ -9,7 +9,8 @@ use App\Http\Controllers\controllerProduct;
 use App\Http\Controllers\ControllerCart;
 use App\Http\Controllers\ControllerOrder;
 use App\Http\Controllers\ControllerDashboard;
-use App\Http\Controllers\ControllerPayPal;
+use App\Http\Controllers\PaypalPaymentController;
+use App\Http\Controllers\StripePaymentController;
 
 Route::controller(ControllerDashboard::class)->group(function(){
     Route::middleware('auth')->group(function () {
@@ -47,20 +48,27 @@ Route::controller(ControllerContact::class)->group(function(){
 
 Route::controller(ControllerCart::class)->group(function(){
     Route::get('/cart', "cart_view")->name('cart_view');
-    Route::get('/cart/delete/{cart_id}', "delete_cart_id")->name('delete_cart_id');
-    
     Route::post('/cart/add/{product_id}', "cart_add")->name('cart_add');
-    Route::get('/cart/clear/', "cart_clear")->name('cart_clear');
+    Route::get('/cart/delete/{cart_id}', "delete_cart_id")->name('delete_cart_id');
+    Route::get('/cart/clear', "cart_clear")->name('cart_clear');
+    Route::get('/cart/empty', "cart_empty")->name('cart_empty');
 });
 
 
 Route::controller(ControllerOrder::class)->group(function(){
     Route::get('/order', "order_view")->name('order_view');
+    Route::post('/order/store', "order_store")->name('order_store');
 });
 
 
- 
- 
-Route::get('payment', [ControllerPayPal::class, 'payment'])->name('payment');
-Route::get('cancel', [ControllerPayPal::class, 'cancel'])->name('payment.cancel');
-Route::get('payment/success', [ControllerPayPal::class, 'success'])->name('payment.success');
+Route::controller(PaypalPaymentController::class)->prefix('paypal')->group(function () {
+    Route::get('handle-payment', 'handlePayment')->name('make.payment');
+    Route::get('cancel-payment', 'paymentCancel')->name('cancel.payment');
+    Route::get('payment-success', 'paymentSuccess')->name('success.payment');
+});
+
+
+Route::controller(StripePaymentController::class)->group(function(){
+    Route::get('payment/view', 'payment_view')->name('payment_view');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});

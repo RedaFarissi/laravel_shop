@@ -34,7 +34,7 @@ a{ color: rgba(0 0 0/85%); text-decoration: none;}
 .black{ color: var(--black);}
 .rose{ background-color: #ffd3b4}
 .text-rose{ color: #ffd3b4}
-
+.cover{object-fit: cover;}
 /***************************** *****************************/
 
 body{ position:relative;   font-family: "poppins"; }

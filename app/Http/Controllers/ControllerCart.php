@@ -11,8 +11,12 @@ class ControllerCart extends Controller{
     public function cart_view(Request $request) {
         $session = $request->session();
         $carts = $session->get('cart', []);
-        $total_price = 0 ;
         
+        if(count($carts) === 0){
+            return redirect()->route('cart_empty');
+        }
+
+        $total_price = 0 ;
         foreach($carts as $cart) $total_price += $cart['price'] * $cart['quantity'] ;
        
         return view('cart.carts' , [ 
@@ -45,6 +49,7 @@ class ControllerCart extends Controller{
             $products[count($products)] = $product;
         }
         $session->put('cart', $products);
+        $cart = session('cart');
         return redirect()->route('cart_view');
     }
 
@@ -60,11 +65,14 @@ class ControllerCart extends Controller{
         return redirect()->route('cart_view');
     }
     
-
     public function cart_clear(){
         $request = request();
         $session = $request->session();
         $session->flush();
         return redirect()->route('cart_view');
+    }
+
+    public function cart_empty(){
+        return view('cart.empty');
     }
 }

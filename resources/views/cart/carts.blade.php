@@ -1,171 +1,162 @@
 @extends('layout')
 
-@section('title','Product Create')
+@section('title','Cart')
 
 @section('head')
-    <style>
-      .card-payment{
-        border:9px solid var(--rose)
-      }
-      
-      @media (min-width: 1025px) {
-        .h-custom {  height: 100vh !important;  }
-      }
-      @media (max-width: 600px) {
-        .card-payment{ border:none;}
-      }
+  <link rel="stylesheet" href="{{ url('css/cart/cart.css') }}">
+  <style>
+
   </style>
 @endsection
 
 @section('content')
-  <section class="h-100 h-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100" >
-        <div class="col">
-          <div class="card rounded" style="box-shadow:3px 3px 20px rgba(0 0 0/25%);">
-            <div class="card-body p-4">
-
-              <div class="row">
-
-                <div class="col-lg-7">
-                  <h5 class="mb-3"><a href="{{ url()->previous() }}" class="text-body">
-                    <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a>
-                  </h5>
-                  <hr/>
-
-                  <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                      <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have {{count($carts)}} items in your cart</p>
-                    </div>
-                    <div>
-                      <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                          class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                    </div>
-                  </div>
-
-
-                  @foreach ($carts as $cart) 
-                    <div class="card mb-3">
-                      <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                          <div class="d-flex flex-row align-items-center">
-                            <a href="{{ route('products.show', [$cart->id]) }}">
-                              <img 
-                                src="{{ asset('storage/images/' . $cart->image) }}"
-                                class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                            </a>
-                            <div class="ms-3">
-                              <h5> {{(strlen($cart->name)>20)?substr($cart->name, 0, 20)."...":$cart->name}} </h5>
-                              <p class="small mb-0">{{ substr($cart->description, 0, 26) }}</p>
-                            </div>
-                          </div>
-                          <div class="d-flex flex-row align-items-center">
-                            <div style="width: 50px;">
-                              <h5 class="fw-normal mb-0"> {{ $cart->quantity }}</h5>
-                            </div>
-                            <div style="width: 80px;">
-                              <h5 class="mb-0"> ${{ $cart->price*$cart->quantity }}</h5>
-                            </div>
-                            <a href="{{ route('delete_cart_id' , $cart->id) }}" style="color: #cecece;">
-                              <i class="fas fa-trash-alt text-danger"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  @endforeach
-
-                </div>
-
-
-
-
-                {{-- box --}}
-                <div class="col-lg-5 align-self-center">
-                  <div class="card card-payment text-dark rounded-3">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Card details</h5>
-                        <x-application-logo class="text-gray-800" style="width: 35px" />
-                      </div>
-
-                      <p class="small mb-2">Card type</p>
-                      <a href="#!" type="submit" class="text-dark"><i
-                          class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-dark"><i
-                          class="fab fa-cc-visa fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-dark"><i
-                          class="fab fa-cc-amex fa-2x me-2"></i></a>
-                      <a href="#!" type="submit" class="text-dark"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
-                      <form class="mt-4">
-                        <div class="form-outline form-white mb-4">
-                          <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                            placeholder="Cardholder's Name" />
-                          <label class="form-label" for="typeName">Cardholder's Name</label>
-                        </div>
-
-                        <div class="form-outline form-white mb-4">
-                          <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                            placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                          <label class="form-label" for="typeText">Card Number</label>
-                        </div>
-
-                        <div class="row mb-4">
-                          <div class="col-md-6">
-                            <div class="form-outline form-white">
-                              <input type="text" id="typeExp" class="form-control form-control-lg"
-                                placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                              <label class="form-label" for="typeExp">Expiration</label>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-outline form-white">
-                              <input type="password" id="typeText" class="form-control form-control-lg"
-                                placeholder=";" size="1" minlength="3" maxlength="3" />
-                              <label class="form-label" for="typeText">Cvv</label>
-                            </div>
-                          </div>
-                        </div>
-
-                      </form>
-
-                      <hr class="my-4">
-
-                      {{-- <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$4798.00</p>
-                      </div>
-
-                      <div class="d-flex justify-content-between">
-                        <p class="mb-2">Shipping</p>
-                        <p class="mb-2">$20.00</p>
-                      </div> --}}
-
-                      <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total {{-- (Incl. taxes) --}}</p>
-                        <p class="mb-2">${{$total_price}}</p>
-                      </div>
-
-                      <button type="button" class="btn rose btn-block btn-md">
-                        <div class="d-flex justify-content-between gap-1">
-                          <span>${{$total_price}}</span> 
-                          <span> Checkout </span>
-                        </div>
-                      </button>
-
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container-cart mb-5">
+    <div class="content mt-4">
+      <h1>Your Cart</h1>
     </div>
+    @foreach ($carts as $cart) 
+        <article class="product">
+          <header>
+            <a class="remove">
+              <img src="{{ asset('storage/images/' . $cart->image) }}" class="cover">
+              <h3>
+                <a href="{{ route('delete_cart_id' , $cart->id) }}" style="color: #cecece;">
+                  <i class="fas fa-trash-alt text-danger"></i>
+                </a>
+              </h3>
+            </a>
+          </header>
+          <div class="content">
+            <h1>{{(strlen($cart->name)>50)?substr($cart->name, 0, 50)."...":$cart->name}}</h1>
+            {{ $cart->description }}
+          </div>
+
+          <section class="content">
+            <div class="qt-box">
+              <span class="qt-minus">-</span>
+              <span class="qt">  
+                  <input type="number" id='' value="{{ $cart->quantity }}" class="ps-4 w-100"
+                  style="text-align: center;border:none;ouline:none "/> 
+              </span>
+              <span class="qt-plus">+</span>
+            </div>
+
+            <h2 class="full-price">
+              {{ $cart->price*$cart->quantity }}$
+            </h2>
+
+            <h2 class="price">
+              {{ $cart->price}}$
+            </h2>
+          </section>
+        </article>
+    @endforeach
+
+
+
+   
+      <div class="w-100 d-flex-between-center">
+          
+            <div class="h1" style="float:clear">Total: <span>{{$total_price}}</span>$</div>
+            <a href="{{ route('order_view') }}" class="btn btn-lg fs-4 rose">Checkout</a>
+   
+      </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {{-- <section>
+
+
+                <!-- box -->
+                <div class="col-lg-5 align-self-center ">
+                  <div class="text-dark rounded-3">
+                    <div class="card-head d-flex justify-content-between align-items-center mb-4">
+                      <h5 class="mb-0">Card details</h5>
+                      <x-application-logo class="text-gray-800 opacity-1" style="width: 35px" />
+                    </div>
+                    <div class="box-card d-flex-center-center">
+                      <img class="box-card-img" src="{{ url('images/card.png') }}" />
+                      <div class="box-card-2">
+                        
+                        <form id='checkout-form' method='post' action="{{ route('stripe.post') }}">   
+                          @csrf             
+                          <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
+                          <br>
+                          <div class="form-control payment-btn" id="card-element"></div>
+                          <button id='pay-btn' onclick="createToken()"
+                                  class="payment-btn border bg-dark text-light d-flex justify-content-center align-items-center" type="button"
+                              >
+                              <i class="fa-regular fa-credit-card fs-1 me-3"></i>  
+                              Pay with Card
+                          </button>
+                        <form>
+                        <span class="text-light p-2">Or</span>
+                        
+                        <a href="{{ route('make.payment') }}" class="payment-btn border bg-paypal text-light  d-flex justify-content-center align-items-center">
+                          <i class="fa-brands fa-cc-paypal fs-1 me-3"></i>
+                          Pay with PayPal
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="fs-4 mt-3">
+                      Total Price : ${{$total_price}}
+                    </div>
+
+                  </div>
+
+                </div>
+
+
   </section>
+  
+ <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript">
+  
+    var stripe = Stripe('{{ env('STRIPE_KEY') }}')
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+  
+    /*------------------------------------------
+    --------------------------------------------
+    Create Token Code
+    --------------------------------------------
+    --------------------------------------------*/
+    function createToken() {
+        document.getElementById("pay-btn").disabled = true;
+        stripe.createToken(cardElement).then(function(result) {
+   
+            if(typeof result.error != 'undefined') {
+                document.getElementById("pay-btn").disabled = false;
+                alert(result.error.message);
+            }
+  
+            /* creating token success */
+            if(typeof result.token != 'undefined') {
+                document.getElementById("stripe-token-id").value = result.token.id;
+                document.getElementById('checkout-form').submit();
+            }
+        });
+    }
+  </script> --}}
 @endsection

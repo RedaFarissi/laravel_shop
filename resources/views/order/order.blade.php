@@ -1,133 +1,89 @@
 @extends('layout')
 
 @section('title','Product Create')
+@section('head')
+<style>
+  #first_name , #last_name , #email , #address , #postal_code , #city { 
+      background-color:#e9e9e9; width:99%; border:none; border-radius: 4px; 
+      height:50px; margin-bottom:9px; outline:0; padding:4px; padding:9px;
+  }
+  .shadow{
+    box-shadow: 3px 3px 7px rgba(0 0 0/40%)
+  }
+ 
+  @media only screen and (max-width: 850px){
+      .col-md-7{ width:100%; padding: 0}
+      .btn-submit{ margin-bottom:90px;}
+      #first_name , #last_name , #email , #address , #postal_code , #city { 
+        background-color:#e9e9e9; width:100%; padding:0px;
+      }
+  }
+</style>
+@endsection
 
 @section('content')
-<section class="h-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-10 col-xl-8">
-          <div class="card" style="border-radius: 10px;">
-            <div class="card-header px-4 py-5 d-flex-between-center">
-                <h5 class="text-muted mb-0">Thanks for your Order</h5>
-                <h5 class="text-muted mb-0">Total
-                 paid: <span class="mb-0 ms-2">$1040</span>
-                </h5>
-            </div>
-            <div class="card-body p-4">
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="lead fw-normal mb-0" >Receipt</p>
-                <p class="small text-muted mb-0">Receipt Voucher : 1KAU9-84UIL</p>
-              </div>
-              <div class="card shadow-0 border mb-4">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                        class="img-fluid" alt="Phone">
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0">Samsung Galaxy</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">White</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Capacity: 64GB</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Qty: 1</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">$499</p>
-                    </div>
-                  </div>
-                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
-                  <div class="row d-flex align-items-center">
-                    <div class="col-md-2">
-                      <p class="text-muted mb-0 small">Track Order</p>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="progress" style="height: 6px; border-radius: 16px;">
-                        <div class="progress-bar" role="progressbar"
-                          style="width: 65%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="65"
-                          aria-valuemin="0" aria-valuemax="100"></div>
+<section>
+  <div class="container-fluid pt-4">
+      <div class="row ">
+          <div class="m-auto col-md-7 shadow pb-5">
+              <h1 class="mt-3">Your order</h1>
+              <b>Total: ${{ $total_price }}</b>
+              <hr class="mt-1 mb-5" />
+          
+            <form action="{{ route('order_store') }}" method="POST">
+              @csrf
+              <div class="row mx-4">
+                  <div class="col-md-6">
+                      <div class="form-outline">
+                          <input type="text" name="first_name" id='first_name'  autofocus required/>
+                          <label class="form-label" value="{{ old('first_name') }}" for="id_first_name"><b>First</b></label>
                       </div>
-                      <div class="d-flex justify-content-around mb-1">
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="card shadow-0 border mb-4">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                        class="img-fluid" alt="Phone">
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0">iPad</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Pink rose</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Capacity: 32GB</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Qty: 1</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">$399</p>
-                    </div>
-                  </div>
-                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
-                  <div class="row d-flex align-items-center">
-                    <div class="col-md-2">
-                      <p class="text-muted mb-0 small">Track Order</p>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="progress" style="height: 6px; border-radius: 16px;">
-                        <div class="progress-bar" role="progressbar"
-                          style="width: 20%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="20"
-                          aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="col-md-6 mt-2 mt-sm-0">
+                      <div class="form-outline">
+                        <input type="text" name="last_name" value="{{ old('last_name') }}" id='last_name'  required/>
+                          <label class="form-label" for="form2"><b>Last</b></label>
                       </div>
-                      <div class="d-flex justify-content-around mb-1">
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
-                      </div>
-                    </div>
                   </div>
-                </div>
               </div>
-  
-              <div class="d-flex justify-content-between pt-2">
-                <p class="fw-bold mb-0">Order Details</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+          
+              <div class="row  mt-3 mx-4">
+                  <div class="col-12">
+                      <div class="form-outline">
+                          <input type="email" name="email" id="email" value="{{ old('email') }}"  required/>
+                          <label class="form-label" for="form5"><b>Email</b></label>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <div class="form-outline">
+                          <input type="text" name="address" value="{{ old('address') }}" id="address" required/> 
+                          <label class="form-label" for="form5"><b>Address</b></label>
+                      </div>
+                  </div>
+                 
+                  <div class="col-12">
+                      <div class="form-outline">
+                        <input type="text" name="postal_code" value="{{ old('postal_code') }}" id="postal_code"  required/> 
+                        <label class="form-label" for="form5"><b>Postal code</b></label>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <div class="form-outline">
+                        <input type="text" name="city" id="city" value="{{ old('city') }}" required/> 
+                        <label class="form-label" for="form5"><b>City</b></label>
+                      </div>
+                  </div>  
+                  <div class="col-12 mt-3">
+                      <button type="submit" class="btn-submit w-100 btn btn-lg fs-4" style='background-color:#ffd3b4;' >
+                          Create Order
+                      </button>
+                  </div>
+                              
               </div>
-  
-              <div class="d-flex justify-content-between pt-2">
-                <p class="text-muted mb-0">Invoice Number : 788152</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
-              </div>
-  
-              <div class="d-flex justify-content-between">
-                <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
-              </div>
-  
-              <div class="d-flex justify-content-between mb-5">
-                <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
-              </div>
-            </div>
-           
+            </form>
           </div>
-        </div>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
+          
 @endsection
