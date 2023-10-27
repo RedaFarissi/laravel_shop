@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
        
 use Illuminate\Http\Request;
 use Stripe;
+use App\Models\Order;
+use App\Models\OrderItem;
        
+
 class StripePaymentController extends Controller
 {
     public function payment_view(){
+        $order = Order::latest()->first();
+        
         return view("payment.index");   
     }  
 

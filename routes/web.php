@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\ControllerContact;
 use App\Http\Controllers\ControllerHome;
 use App\Http\Controllers\controllerProduct;
@@ -39,9 +38,9 @@ Route::controller(ControllerHome::class)->group(function(){
 
 Route::controller(ControllerContact::class)->group(function(){
     Route::middleware('auth')->group(function () {
-        Route::get('/contact/list/', "list")->middleware('super_admin')->name('contact_list');
+        Route::get('/contact/list', "list")->middleware('super_admin')->name('contact_list');
         Route::get('/contact/create', "create")->name('contact_create');
-        Route::post('/contact/store/', "store")->name('contact_store');
+        Route::post('/contact/store', "store")->name('contact_store');
     });
 });
 

@@ -50,6 +50,6 @@ class ControllerOrder extends Controller{
         }
         $controllerCart = new ControllerCart();
         $controllerCart->cart_clear();
-        return redirect()->route('order_view');
+        return redirect()->route('payment_view');
     }
 }
