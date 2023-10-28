@@ -5,8 +5,11 @@
 @section('head')
   <link rel="stylesheet" href="{{ url('css/cart/cart.css') }}">
   <style>
-
-  </style>
+    body{ background-color: var(--white)}
+    @media (min-width: 1025px) {
+      .h-custom {  height: 100vh !important;  }
+    }
+</style>
 @endsection
 
 @section('content')

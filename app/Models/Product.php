@@ -19,4 +19,8 @@ class Product extends Model {
     public function scopeProductsFromSpecificUser($query, $userId){
         return $query->where('user_id', $userId);
     }
+    public function order_items(){
+        return $this->hasMany(OrderItem::class);
+    }
+
 }

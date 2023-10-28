@@ -1,19 +1,19 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Http\Controllers\StripePaymentController;
 
-class PaypalPaymentController extends Controller
-{
+class PaypalPaymentController extends Controller {
     public function handlePayment(Request $request)
     {
-        $session = $request->session();
-        $carts = $session->get('cart', []);
-        $total_price = 0 ;
-        foreach($carts as $cart) $total_price += $cart['price'] * $cart['quantity'] ;
-       
+        $orderId = Order::latest()->first()->id;
+        $order_to_pay = OrderItem::where('order_id',$orderId)->get();
+        $StripePaymentController = new StripePaymentController();
+        
+
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -27,7 +27,7 @@ class PaypalPaymentController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $total_price
+                        "value" => $StripePaymentController->totalPrice($order_to_pay,$orderId)
                     ]
                 ]
             ]
@@ -45,7 +45,14 @@ class PaypalPaymentController extends Controller
     }
 
     public function paymentCancel(){
-        return redirect()->route('cart_view')->with('error', $response['message'] ?? 'You have canceled the transaction.');
+        $order = Order::latest()->first();
+        $orderId = $order->id;
+        $order->delete();
+        $orderItem = OrderItem::where('order_id',$orderId)->get();
+        foreach($orderItem as $item){
+            $item->delete();
+        }
+        return redirect()->route('payment_failed');
     }
 
     public function paymentSuccess(Request $request)
@@ -55,9 +62,13 @@ class PaypalPaymentController extends Controller
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()->route('cart_view')->with('success', 'Transaction complete.');
+            $order = Order::latest()->first();
+            $order->paid = true;
+            $order->save();
+            return redirect()->route('payment_success');
         } else {
-            return redirect()->route('cart_view')->with('error', $response['message'] ?? 'Something went wrong.');
+            $this->paymentCancel();
+            return redirect()->route('payment_failed');
         }
     }
 }

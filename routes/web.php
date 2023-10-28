@@ -10,6 +10,7 @@ use App\Http\Controllers\ControllerOrder;
 use App\Http\Controllers\ControllerDashboard;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\StripePaymentController;
+use GrahamCampbell\ResultType\Success;
 
 Route::controller(ControllerDashboard::class)->group(function(){
     Route::middleware('auth')->group(function () {
@@ -68,6 +69,9 @@ Route::controller(PaypalPaymentController::class)->prefix('paypal')->group(funct
 
 
 Route::controller(StripePaymentController::class)->group(function(){
-    Route::get('payment/view', 'payment_view')->name('payment_view');
     Route::post('stripe', 'stripePost')->name('stripe.post');
+    //handle payment views
+    Route::get('payment/view', 'payment_view')->name('payment_view');
+    Route::get('payment/success', 'payment_success')->name('payment_success');
+    Route::get('payment/failed', 'payment_failed')->name('payment_failed');
 });
