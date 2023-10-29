@@ -22,7 +22,7 @@
                 <table class='table-create w-100'>
 
                     <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Order ID :</b> </td>
+                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">User Name :</b> </td>
                         <td class="td"> 
                             <select id="user_id" name="user_id" class="input-select mt-2 mb-2">
                                 <option value="" selected> ........... </option>

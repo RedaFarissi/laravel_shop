@@ -24,85 +24,100 @@
                 <table class='table-create'>
                     <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
                         <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Order ID :</b> </td>
-                        <td class="td">
-                            <select id="order_id" name="order_id" class="input-select mt-2 mb-2">
-                                <option value="{{$contact->id}}" selected> Order {{$order_item->id}} </option>
-                                @foreach ($orders as $item)
-                                    <option value="{{$item->id}}" @if($item->order_id == $order_item->id) selected @endif> Order {{$item->id}} </option>
+                        <td class="td"> 
+                            <select id="user_id" name="user_id" class="input-select mt-2 mb-2">
+                                {{-- <option value="{{$contact->id}}"> {{$contact->name}} </option> --}}
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}"> {{$user->name}} </option>
                                 @endforeach
                             </select> 
                         </td>
                     </tr>
                     <tr>
                        <td class="td" colspan="2">  
-                            @error('order_id')   
+                            @error('user_id')   
                             <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
                             @enderror
                         </td> 
                     </tr>
 
-
                     <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2"> Product Name :</b> </td>
-                        <td class="td"> 
-                            <select id="product_id" name="product_id" class="input-select mt-2 mb-2">
-                                <option value="{{$order_item->product_id}}" selected> Products {{substr($order_item->product->name,0,30)}} </option>
-                                @foreach ($products as $item)
-                                    <option value="{{$item->id}}">  {{substr($item->name, 0 , 20)}} </option>
-                                @endforeach
-                            </select> 
-                        </td>
-                    </tr>
-                    <tr>
-                       <td class="td" colspan="2">  
-                            @error('product_id')   
-                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
-                            @enderror
-                        </td> 
-                    </tr>                    
-
-                    <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Price :</b> </td>
+                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Email :</b> </td>
                         <td class="td"> 
                             <input 
-                                type="number" value="{{$order_item->price}}"
-                                name="price" class="input-number mt-2 mb-2" 
-                                id='price' autofocus
+                                type="text" value="{{$contact->email}}"
+                                name="email" class="input-number mt-2 mb-2" 
+                                id='email' autofocus
                             />
                         </td>
                     </tr>
                     <tr>
                        <td class="td" colspan="2">  
-                            @error('price')   
+                            @error('email')   
                             <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
                             @enderror
                         </td> 
                     </tr>
 
                     <tr class="mb-2" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Quantity :</b> </td>
+                        <td class="lavel-create-width td"> <b class="d-block mt-2 mb-2">Subject :</b> </td>
                         <td class="td"> 
                             <input 
-                                type="number" value="{{$order_item->quantity}}"
-                                name="quantity" class="input-number mt-2 mb-2" 
-                                id='quantity' autofocus
+                                type="text" value="{{$contact->subject}}"
+                                name="subject" class="input-number mt-2 mb-2" 
+                                id='subject' autofocus
                             />
                         </td>
                     </tr>
                     <tr>
                        <td class="td" colspan="2">  
-                            @error('quantity')   
+                            @error('subject')   
                             <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
                             @enderror
                         </td> 
                     </tr>
+
+                    <tr class="mb-2 position-r" style="border-top:0.1px solid rgba(255 255 255/20%);">
+                        <td class="lavel-create-width position-a td" style="top:0">
+                            <b class="d-block mt-2 mb-2" >Message :</b>
+                        </td>
+                        <td class="td"> 
+                            <textarea name="message" class="input-textarea mt-2 mb-2" id="message" cols="30" rows="10">
+                                {{$contact->message}}
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                       <td class="td" colspan="2">  
+                            @error('message')   
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
+                            @enderror
+                        </td> 
+                    </tr>  
+                    
+                    <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
+                        <td class="td" colspan="2"> 
+                            <input 
+                                type="checkbox" name="answer" id="answer" 
+                                value="{{$contact->answer}}" class="mt-3 mb-2" @checked($contact->answer)
+                            /> &nbsp;
+                            <b class="mt-3 mb-2">answer </b>
+                        </td>
+                    </tr>
+                    <tr>
+                       <td class="td" colspan="2">  
+                            @error('answer')   
+                            <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
+                            @enderror
+                        </td> 
+                    </tr>  
                 </table>
                 <div class="alert bg-dark d-flex-between-center alert-save-item mt-3">
                     <div class="alert-save-item-div">
                         <button type="submit" value="true" name="submit" class="btn bg-blue white" >Save</button>
                         <button type="submit" value="false" name="submit" class="btn bg-blue white" >Save and add another</button>
                     </div>
-                    <a href="{{ route('admin_order_item_delete',[$order_item->id]) }}" class="btn btn-danger" >Delete</a>
+                    <a href="{{ route('admin_contact_delete',[$contact->id]) }}" class="btn btn-danger" >Delete</a>
                 </div>
            
         </form>

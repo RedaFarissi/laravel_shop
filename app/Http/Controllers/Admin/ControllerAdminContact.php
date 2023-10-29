@@ -23,7 +23,7 @@ class ControllerAdminContact extends Controller {
         $contact->email = strip_tags($request->input('email'));
         $contact->subject = strip_tags($request->input('subject'));
         $contact->message = strip_tags($request->input('message'));
-        $contact->answer = strip_tags($request->input('answer'));
+        $contact->answer = strip_tags($request->input('answer')) || false;
 
         $contact->save();
         return redirect()-> route( ($request->input('submit') == "false")?
@@ -32,6 +32,7 @@ class ControllerAdminContact extends Controller {
     public function admin_contact_edit_views($id){
         return view('admin.contacts.edit' , [
             "contact"=>Contact::findOrFail($id),
+            "users"=>User::all(),
         ]);
     } 
     public function admin_contact_edit(Request $request , $id){        
@@ -48,7 +49,7 @@ class ControllerAdminContact extends Controller {
         $contact->email = strip_tags($request->input('email'));
         $contact->subject = strip_tags($request->input('subject'));
         $contact->message = strip_tags($request->input('message'));
-        $contact->answer = strip_tags($request->input('answer'));;
+        $contact->answer = strip_tags($request->input('answer')) || false ;
         $contact->save();
      
         return redirect()-> route( ($request->input('submit') == "false")?

@@ -50,7 +50,7 @@
                         @foreach ($contacts as $contact)
                             <tr>
                                 <td><input type="checkbox" onclick="selectOne()" name="selected_items[]" class="selected_items" value="{{$contact->id}}" /></td>
-                                <td class="white"> <a href="{{ route('admin_contact_edit_views' , [$contact->user_id]) }}" class="blue">User {{$contact->user_id}} </a></td>
+                                <td class="white"> <a href="{{ route('admin_contact_edit_views' , [$contact->id]) }}" class="blue">User {{$contact->user_id}} </a></td>
                                 <td class="white"> {{$contact->email}} </td>
                                 <td class="white"> {{$contact->subject}} </td>
                                 <td class="white"> {{$contact->message}} </td>
