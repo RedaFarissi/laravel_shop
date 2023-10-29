@@ -8,7 +8,6 @@
 
 @section('head')
     <link rel="stylesheet" href="{{ url('css/admin/products/list.css') }}">
-    <style> .box-icon{width:23px;height: 23px;} </style>
 @endsection
 
 @section('size',"aside-list")

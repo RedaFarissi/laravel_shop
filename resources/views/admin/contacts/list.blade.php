@@ -54,7 +54,17 @@
                                 <td class="white"> {{$contact->email}} </td>
                                 <td class="white"> {{$contact->subject}} </td>
                                 <td class="white"> {{$contact->message}} </td>
-                                <td class="white"> {{$contact->answer}} </td>
+                                <td class="white"> 
+                                    @if($contact->answer)
+                                        <div class="rounded-circle border box-icon d-flex-center-center border-success">
+                                            <i class="fa-solid fa-check text-success"></i>
+                                        </div>
+                                    @else 
+                                        <div class="rounded-circle border box-icon d-flex-center-center border-danger">
+                                            <i class="fa-solid fa-xmark text-danger"></i> 
+                                        </div>
+                                    @endif 
+                                </td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $contact->created_at }}</td>
                                 <td class="font-size-14 white" style="width:150px;">{{ $contact->updated_at }}</td>
                             </tr>

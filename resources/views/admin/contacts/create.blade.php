@@ -80,9 +80,7 @@
                         <td class="lavel-create-width position-a td" style="top:0">
                             <b class="d-block mt-2 mb-2" >Message :</b>
                         </td>
-                        <td class="td"> 
-                            <textarea name="message" class="input-textarea mt-2 mb-2" id="message" cols="30" rows="10"></textarea>
-                        </td>
+                        <td class="td"><textarea name="message" class="input-textarea mt-2 mb-2" id="message" cols="30" rows="10"></textarea>  </td>
                     </tr>
                     <tr>
                        <td class="td" colspan="2">  

@@ -44,7 +44,7 @@ a:hover{ color:var(--white);}
 .blue{ color: var(--blue);}
 .bg-white{ background-color: var(--white);}
 .white{ color: var(--white);}
-
+.box-icon{width:23px;height: 23px;} 
 
 /* // Scrool   */
 .overflow-x-scroll{ overflow-x:scroll;  }
