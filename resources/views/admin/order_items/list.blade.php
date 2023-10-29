@@ -1,9 +1,9 @@
 @extends('layouteAdmin')
 
-@section('title','Products List')
+@section('title','OrderItems List')
 
 @section('path')
-    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_products_list') }}'>Products</a> > list
+    <a href="{{route('admin_home')}}">Admin</a> › <a href='{{ route('admin_order_items_list') }}'>OrderItems</a> > list
 @endsection
 
 @section('head')
@@ -16,11 +16,11 @@
 
 <div id="product-box" class="content-list">
     <div class="p-4">
-        <form action="{{route('admin_products_delete_selected')}}" method="POST" id="delete_all_form">
+        <form action="{{route('admin_order_items_delete_selected')}}" method="POST" id="delete_all_form">
             @csrf
             <div class="d-flex-between-center mb-5" >
                 <h5 class="font-weight-3 mx-3">Select product to change</h5>
-                <a href="{{ route('admin_product_create_views') }}" class="add_icon_btn_in_list font-weight-3 mb-1" style="font-size:13px">
+                <a href="{{ route('admin_order_item_create_views') }}" class="add_icon_btn_in_list font-weight-3 mb-1" style="font-size:13px">
                     ADD PRODUCT <div class="fa-solid fa-plus"></div>
                 </a>
             </div>
@@ -29,51 +29,39 @@
                 <label for="Action">Action:</label>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
                 <select name="action" id="Action">
                     <option value="">------------</option>
-                    <option value="delete_selected_products" id="delete_selected_products" name='delete_selected_products'> Delete selected products </option>
+                    <option value="delete_selected_products" id="delete_selected_products" name='delete_selected_products'> Delete selected order items </option>
                 </select>
                 <button type="submit" form="delete_all_form" class="btn ms-1 p-1">Go </button>
-                &nbsp; <span id='number_select'>0</span> of {{count($products)}} selected
+                &nbsp; <span id='number_select'>0</span> of {{count($order_items)}} selected
                 <div class="overflow-x-auto">
                     <table class="table table-list-width">
                         <tr>
                             <th style="width:30px">
                                 <input type="checkbox" onclick="selectAll()" id="SelectAll" name="SelectAll"  value="checked">
                             </th>
-                            <th class="white"> user </th>
-                            <th class="white"> Name </th>
+                            <th class="white"> Order ID</th>
+                            <th class="white"> Product Name</th>
                             <th class="white"> Price </th>
-                            <th class="white"> Category</th>
-                            <th class="white"> Size </th>
-                            <th class="white"> Available </th>
+                            <th class="white"> Quantity </th>
                             <th class="white"> Created at </th>
                             <th class="white"> Updated at </th>
                         </tr>
-                        @foreach ($products as $product)
+                        @foreach ($order_items as $item)
                             <tr>
-                                <td><input type="checkbox" onclick="selectOne()" name="selected_items[]" class="selected_items" value="{{$product->id}}" /></td>
-                                <td class="white"> {{$product->user->name}} </td>
-                                <td><a href="{{ route('admin_product_edit_views' , [$product->id]) }}" class="blue">{{$product->name}} <a></td>
-                                <td class="white"> {{$product->price}} </td>
-                                <td class="white"> {{$product->category->name}} </td>
-                                <td class="white">
-                                    @foreach ($product->sizes as $size)
-                                        <kbd> {{ $size->name }}</kbd>
-                                    @endforeach
-                                 </td>
-                                <td class="white">
-                                    @if($product->available===1)
-                                        <input type="checkbox" checked/>
-                                    @endif
-                                </td>
-                                <td class="font-size-14 white" style="width:150px;">{{ $product->created_at }}</td>
-                                <td class="font-size-14 white" style="width:150px;">{{ $product->updated_at }}</td>
+                                <td><input type="checkbox" onclick="selectOne()" name="selected_items[]" class="selected_items" value="{{$item->id}}" /></td>
+                                <td class="white"> <a href="{{ route('admin_order_item_edit_views' , [$item->id]) }}" class="blue">Order {{$item->order_id}} </a></td>
+                                <td class="white"> {{substr($item->product->name , 0,70)}} </td>
+                                <td class="white"> {{$item->price}} </td>
+                                <td class="white"> {{$item->quantity}} </td>
+                                <td class="font-size-14 white" style="width:150px;">{{ $item->created_at }}</td>
+                                <td class="font-size-14 white" style="width:150px;">{{ $item->updated_at }}</td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
 
                 <div class="font-weight-3 text-secondary mt-4 fs-6" style="margin-bottom:-9px">
-                    {{count($products)}}  @if (count($products)>1) products @else product @endif
+                    {{count($order_items)}}  @if (count($order_items)>1) orders @else order @endif
                 </div>
                 <hr/>
             </div>

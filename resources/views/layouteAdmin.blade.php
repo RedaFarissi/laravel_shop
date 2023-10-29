@@ -60,7 +60,7 @@
                  </table>
 
                  <table class="table table-aside mb-5">
-                  <tr><h6 class="table-heading p-2"> AUTHENTICATION AND AUTHORIZATION </h6></tr>
+                  <tr><h6 class="table-heading p-2"> HOME </h6></tr>
                   <tr>
                       <td class="w-75"><a href='{{ route('admin_products_list') }}' class="link-blue">Products</a></td>
                       <td>
@@ -113,6 +113,68 @@
                     </td>
                   </tr>
                 </table>
+
+                <table class="table table-aside mb-5">
+                  <tr><h6 class="table-heading p-2"> PAYMENT </h6></tr>
+                  <tr>
+                      <td class="w-75"><a href='{{ route('admin_orders_list') }}' class="link-blue">Orders</a></td>
+                      <td>
+                        <a href='{{ route('admin_order_create_views') }}' class="link-blue">
+                          <div class="d-flex-center-center">
+                              <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
+                          </div>
+                        </a>
+                      </td>
+                      <td class="aside-change-icon">
+                        <a href='{{ route('admin_orders_list') }}' class="link-blue">
+                          <div class="d-flex-center-center">
+                            <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
+                          </div>
+                        </a>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class="w-75"><a href='{{ route('admin_order_items_list') }}' class="link-blue">Order Items</a></td>
+                    <td>
+                      <a href='{{ route('admin_order_item_create_views') }}' class="link-blue">
+                        <div class="d-flex-center-center">
+                          <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
+                        </div>
+                      </a>
+                    </td>
+                    <td class="aside-change-icon">
+                      <a href='{{ route('admin_order_items_list') }}' class="link-blue">
+                        <div class="d-flex-center-center">
+                           <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
+                        </div>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
+
+                <table class="table table-aside mb-5">
+                  <tr><h6 class="table-heading p-2"> CONTACT US </h6></tr>
+                  <tr>
+                      <td class="w-75"><a href='{{ route('admin_contacts_list') }}' class="link-blue">Contacts</a></td>
+                      <td>
+                        <a href='{{ route('admin_contact_create_views') }}' class="link-blue">
+                          <div class="d-flex-center-center">
+                              <div class="fa-solid fa-plus" style="color: var(--green);"></div>&nbsp; <div>Add</div>
+                          </div>
+                        </a>
+                      </td>
+                      <td class="aside-change-icon">
+                        <a href='{{ route('admin_contacts_list') }}' class="link-blue">
+                          <div class="d-flex-center-center">
+                            <div class="fa-solid fa-pen text-warning"></div> &nbsp;<div>Change</div>
+                          </div>
+                        </a>
+                      </td>
+                  </tr>
+                  
+                </table>
+
               </div>
             </aside>
 

@@ -100,9 +100,10 @@
       </div>
 
         <script src="{{ url('js/bootstrap.js') }}"></script>
+        <script src="{{ url('js/home-index.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-          window.document.getElementById('profile_to_click').addEventListener("click",(event)=>{
+           window.document.getElementById('profile_to_click').addEventListener("click",(event)=>{
             ( window.getComputedStyle(document.getElementById("profile-drop")).getPropertyValue('display')  === "none" )? document.getElementById("profile-drop").style = "display:block" :document.getElementById("profile-drop").style= "display:none";
             event.stopPropagation()
           })
@@ -119,24 +120,7 @@
           function remove_profile(){
             document.getElementById("profile-drop").style= "display:none";
           }
-
-          window.addEventListener("scroll", () => {
-              var sidebar = document.getElementById("aside")
-              var container_home = document.getElementById("container-home")
-              var product_box = document.getElementById("product-box")
-
-              //getBoundingClientRect is function to get distance between top of page and element
-              if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth >= 1024){
-                sidebar.style = "position:fixed;top:0px;padding-top:0px;z-index:99;height:100vh;";
-                container_home.style = "position:relative"
-                product_box.style = "width:calc(100% - 236px);position:absolute;right:1px;"
-              }else{
-                sidebar.style = "position:static;padding-top:0px"
-                product_box.style = "position:static;"
-              }
-          });
         </script>
-
     </body>
 
 </html>

@@ -92,7 +92,7 @@
 
                     <tr class="position-r" style="border-top:0.1px solid rgba(255 255 255/20%);">
                         <td class="lavel-create-width position-a td" style="top:0">
-                            <b class="d-block mt-2 mb-2" >description :</b>
+                            <b class="d-block mt-2 mb-2" >Description :</b>
                         </td>
                         <td class="td"> 
                             <textarea type="text" name="description" class="input-textarea mt-2 mb-2" id='description'>{{old('description')}}</textarea>

@@ -16,8 +16,8 @@
 
     <form action="{{ route('contact_store') }}" method="POST">
         @csrf
-        <input type='text' name='subject' class="subject" placeholder='Title of the email (subject)' required /><br>
-        <input type='email' name='email'  placeholder='Your email' required/><br>
+        <input type='text' name='subject' class="subject rounded" placeholder='Title of the email (subject)' required /><br>
+        <input type='email' name='email' class="rounded" placeholder='Your email' required/><br>
         <textarea name='message' placeholder='Your message' class='textarea'> </textarea>
         <button type='submit' class='button btn bg-dark px-5 py-2 fs-5 text-light'> Send </button>
     </form>
