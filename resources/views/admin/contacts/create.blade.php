@@ -92,17 +92,18 @@
                         </td> 
                     </tr>  
                     
-                    <tr class="mb-2 position-r" style="border-top:0.1px solid rgba(255 255 255/20%);">
-                        <td class="lavel-create-width position-a td" style="top:0">
-                            <b class="d-block mt-2 mb-2" >Message :</b>
-                        </td>
-                        <td class="td"> 
-                            <textarea name="message" class="input-textarea mt-2 mb-2" id="message" cols="30" rows="10"></textarea>
+                    <tr style="border-top:0.1px solid rgba(255 255 255/20%);">
+                        <td class="td" colspan="2"> 
+                            <input 
+                                type="checkbox" name="answer" id="answer" 
+                                value="1" class="mt-3 mb-2" 
+                            /> &nbsp;
+                            <b class="mt-3 mb-2">answer </b>
                         </td>
                     </tr>
                     <tr>
                        <td class="td" colspan="2">  
-                            @error('message')   
+                            @error('answer')   
                             <ul class="mt-2"><li class="text-danger"> {{$message}} </li></ul>               
                             @enderror
                         </td> 
