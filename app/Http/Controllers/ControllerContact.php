@@ -27,6 +27,7 @@ class ControllerContact extends Controller {
         $contact->subject = strip_tags($request->input('subject'));
         $contact->email = strip_tags($request->input('email'));
         $contact->message = strip_tags($request->input('message'));
+        $contact->answer = false;
         $contact->save();
         return view("contact.success");
     }
