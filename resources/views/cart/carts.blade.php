@@ -9,6 +9,38 @@
     @media (min-width: 1025px) {
       .h-custom {  height: 100vh !important;  }
     }
+    .d-flex-response{display: flex;}
+    .qt{border: none}
+    @media only screen and (max-width: 670px) {
+      .product{margin-bottom: 60px }
+      .d-flex-response{ display: flex; justify-content: space-between;align-items: center}
+      .btn-sm{
+        display: inline-block;
+      }
+      .position-price{
+        position: absolute;
+        right:0;
+        top:calc(100% + 2px);
+      }
+      [class="content d-flex-between-center flex-wrap position-relative"]{
+          width: 100%;display: block; 
+      }
+      [class="btn btn-sm btn-outline-dark ms-3 h-75 align-self-center"]{
+        margin-right:9px 
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      
+  .qt, .qt-plus, .qt-minus {
+    display: block;
+    clear:both;
+  }
+  .qt-box{
+    display: flex;
+    align-items: center;
+    height: 75%;
+  }
+}
 </style>
 @endsection
 
@@ -18,7 +50,7 @@
       <h1>Your Cart</h1>
     </div>
     @foreach ($carts as $cart) 
-        <article class="product">
+       <article class="product">
           <header>
             <a class="remove">
               <img src="{{ asset('storage/images/' . $cart->image) }}" class="cover">
@@ -29,137 +61,64 @@
               </h3>
             </a>
           </header>
-          <div class="content">
+          <div class="content" style="overflow:hidden">
             <h1>{{(strlen($cart->name)>50)?substr($cart->name, 0, 50)."...":$cart->name}}</h1>
             {{ $cart->description }}
           </div>
 
-          <section class="content">
-            <div class="qt-box">
-              <span class="qt-minus">-</span>
-              <span class="qt">  
-                  <input type="number" id='' value="{{ $cart->quantity }}" class="ps-4 w-100"
-                  style="text-align: center;border:none;ouline:none "/> 
-              </span>
-              <span class="qt-plus">+</span>
+          <section class="content d-flex-between-center flex-wrap position-relative">
+            <form action="{{ route('cart_add' , $cart->id) }}" method="POST"> 
+            @csrf
+            <div class="d-flex-response">
+                <div class="qt-box">
+                  <div class="qt-minus">-</div>
+                  <div class="qt"> 
+                      <input 
+                        type="number" name="quantity" value="{{ $cart->quantity }}" class="ps-4 w-100 quantity"
+                        id="quantity_{{ $cart->id }}" style="text-align: center;border:none;ouline:none"
+                      /> 
+
+                  </div>
+                  <div class="qt-plus">+</div>
+                </div>
+                <button class="btn btn-sm btn-outline-dark ms-3 h-75 align-self-center" > UPDATE </button>   
             </div>
-
-            <h2 class="full-price">
-              {{ $cart->price*$cart->quantity }}$
-            </h2>
-
-            <h2 class="price">
-              {{ $cart->price}}$
-            </h2>
+            </form> 
+            <div class="position-price">
+                <h2 class="full-price"> {{ $cart->price*$cart->quantity }}$ </h2>
+                <h2 class="price"> {{ $cart->price}}$ </h2>
+            </div>
           </section>
-        </article>
+       </article>
     @endforeach
 
 
-
-   
-      <div class="w-100 d-flex-between-center">
-          
-            <div class="h1" style="float:clear">Total: <span>{{$total_price}}</span>$</div>
-            <a href="{{ route('order_view') }}" class="btn btn-lg fs-4 rose">Checkout</a>
-   
-      </div>
-
+    <div class="w-100 alert alert-light d-flex-between-center">
+      <div class="h1" style="float:clear">Total: <span>{{$total_price}}</span>$</div>
+      <a href="{{ route('order_view') }}" class="btn btn-lg fs-4 rose">Checkout</a>
+    </div>
 </div>
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+        const plusButtons = document.querySelectorAll(".qt-plus");
+        const minusButtons = document.querySelectorAll(".qt-minus");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  {{-- <section>
-
-
-                <!-- box -->
-                <div class="col-lg-5 align-self-center ">
-                  <div class="text-dark rounded-3">
-                    <div class="card-head d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
-                      <x-application-logo class="text-gray-800 opacity-1" style="width: 35px" />
-                    </div>
-                    <div class="box-card d-flex-center-center">
-                      <img class="box-card-img" src="{{ url('images/card.png') }}" />
-                      <div class="box-card-2">
-                        
-                        <form id='checkout-form' method='post' action="{{ route('stripe.post') }}">   
-                          @csrf             
-                          <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
-                          <br>
-                          <div class="form-control payment-btn" id="card-element"></div>
-                          <button id='pay-btn' onclick="createToken()"
-                                  class="payment-btn border bg-dark text-light d-flex justify-content-center align-items-center" type="button"
-                              >
-                              <i class="fa-regular fa-credit-card fs-1 me-3"></i>  
-                              Pay with Card
-                          </button>
-                        <form>
-                        <span class="text-light p-2">Or</span>
-                        
-                        <a href="{{ route('make.payment') }}" class="payment-btn border bg-paypal text-light  d-flex justify-content-center align-items-center">
-                          <i class="fa-brands fa-cc-paypal fs-1 me-3"></i>
-                          Pay with PayPal
-                        </a>
-                      </div>
-
-                    </div>
-                    <div class="fs-4 mt-3">
-                      Total Price : ${{$total_price}}
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-  </section>
-  
- <script src="https://js.stripe.com/v3/"></script>
-  <script type="text/javascript">
-  
-    var stripe = Stripe('{{ env('STRIPE_KEY') }}')
-    var elements = stripe.elements();
-    var cardElement = elements.create('card');
-    cardElement.mount('#card-element');
-  
-    /*------------------------------------------
-    --------------------------------------------
-    Create Token Code
-    --------------------------------------------
-    --------------------------------------------*/
-    function createToken() {
-        document.getElementById("pay-btn").disabled = true;
-        stripe.createToken(cardElement).then(function(result) {
-   
-            if(typeof result.error != 'undefined') {
-                document.getElementById("pay-btn").disabled = false;
-                alert(result.error.message);
-            }
-  
-            /* creating token success */
-            if(typeof result.token != 'undefined') {
-                document.getElementById("stripe-token-id").value = result.token.id;
-                document.getElementById('checkout-form').submit();
-            }
+        plusButtons.forEach(plusButton => {
+            plusButton.addEventListener("click", function() {
+                const inputElement = plusButton.closest('.d-flex-response').querySelector('.quantity');
+                inputElement.value = parseInt(inputElement.value) + 1;
+            });
         });
-    }
-  </script> --}}
+
+        minusButtons.forEach(minusButton => {
+            minusButton.addEventListener("click", function() {
+                const inputElement = minusButton.closest('.d-flex-response').querySelector('.quantity');
+                const currentValue = parseInt(inputElement.value);
+                if (currentValue > 0) {
+                    inputElement.value = currentValue - 1;
+                }
+            });
+        });
+    });
+</script>
 @endsection

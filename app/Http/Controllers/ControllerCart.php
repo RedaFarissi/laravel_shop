@@ -32,7 +32,7 @@ class ControllerCart extends Controller{
             'quantity' => 'required|integer', 
         ]);
         $products = $session->get('cart', []);
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
         // Check if the product already exists in the cart
         $productIndex = -1;
         foreach($products as $index => $item){

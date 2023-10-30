@@ -10,7 +10,6 @@ use App\Http\Controllers\ControllerOrder;
 use App\Http\Controllers\ControllerDashboard;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\StripePaymentController;
-use GrahamCampbell\ResultType\Success;
 
 Route::controller(ControllerDashboard::class)->group(function(){
     Route::middleware('auth')->group(function () {

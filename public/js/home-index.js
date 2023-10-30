@@ -17,22 +17,3 @@ scroll_function();
 window.addEventListener("scroll", scroll_function);
 
 
-
-
-window.document.getElementById('profile_to_click').addEventListener("click",(event)=>{
-  ( window.getComputedStyle(document.getElementById("profile-drop")).getPropertyValue('display')  === "none" )? document.getElementById("profile-drop").style = "display:block" :document.getElementById("profile-drop").style= "display:none";
-  event.stopPropagation()
-})
-
-
-function fa_lock_over(){
-  document.getElementById("is_superuser_box").style.display = "block"
-}
-
-function fa_lock_out(){
-  document.getElementById("is_superuser_box").style.display = "none"
-}
-
-function remove_profile(){
-  document.getElementById("profile-drop").style= "display:none";
-}
