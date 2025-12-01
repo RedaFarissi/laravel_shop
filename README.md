@@ -1,4 +1,4 @@
-use command :
+#use command :
     > git clone <repository_url> 
     > cd project-directory
     > composer install
