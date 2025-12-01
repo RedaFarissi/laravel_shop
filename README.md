@@ -14,6 +14,8 @@ php artisan migrate
 php artisan db:seed
 npm install
 npm run dev
+php artisan db:seed --class=SuperAdminSeeder
+php artisan db:seed --class=Products££Seeder
 php artisan serve
 ```
     
