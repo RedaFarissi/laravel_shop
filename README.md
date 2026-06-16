@@ -110,8 +110,12 @@ http://127.0.0.1:8000
 ### Checkout
 <img src="screenshots/checkout.png" width="100%" />
 
+### Payment
+<img src="screenshots/payment1.png" width="100%" />
+
 ### Admin Dashboard
-<img src="screenshots/dashboard.png" width="100%" />
+<img src="screenshots/dashboard1.png" width="100%" />
+<img src="screenshots/create product.png" width="100%" />
 
 ## Project Structure
 
