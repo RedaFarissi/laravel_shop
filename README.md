@@ -95,24 +95,23 @@ http://127.0.0.1:8000
 ## Screenshots
 
 ### Home Page
-
-![Home](screenshots/home.png)
+<img src="screenshots/home.png" width="100%" />
 
 ### Products
+<img src="screenshots/products.png" width="100%" />
 
-![Products](screenshots/products.png)
+### Product detail
+<img src="screenshots/product-detail.png" width="100%" />
 
 ### Cart
+<img src="screenshots/cart.png" width="100%" />
 
-![Cart](screenshots/cart.png)
 
 ### Checkout
-
-![Checkout](screenshots/checkout.png)
+<img src="screenshots/checkout.png" width="100%" />
 
 ### Admin Dashboard
-
-![Dashboard](screenshots/dashboard.png)
+<img src="screenshots/dashboard.png" width="100%" />
 
 ## Project Structure
 
